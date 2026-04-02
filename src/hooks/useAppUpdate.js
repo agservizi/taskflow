@@ -4,8 +4,8 @@ const VERSION_CHECK_URL = 'https://taskflow-woad-six.vercel.app/version.json';
 const CHECK_INTERVAL = 3600000; // 1 ora
 
 // Versione corrente dell'app - aggiornare ad ogni release
-const APP_VERSION_CODE = 11;
-const APP_VERSION_NAME = '4.3.0';
+const APP_VERSION_CODE = 12;
+const APP_VERSION_NAME = '4.4.0';
 
 export function useAppUpdate() {
   const [currentVersion, setCurrentVersion] = useState(null);
