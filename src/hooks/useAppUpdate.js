@@ -86,70 +86,15 @@ export function useAppUpdate() {
 
     if (isNative()) {
       try {
-        // Download interno con progress tracking
-        const response = await fetch(bustUrl);
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-
-        const contentLength = response.headers.get('content-length');
-        const total = contentLength ? parseInt(contentLength, 10) : 0;
-        const reader = response.body.getReader();
-        const chunks = [];
-        let received = 0;
-
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
-          chunks.push(value);
-          received += value.length;
-          if (total > 0) {
-            setDownloadProgress(Math.round((received / total) * 100));
-          }
-        }
-
-        // Converti in base64 e salva con Filesystem
-        const blob = new Blob(chunks, { type: 'application/vnd.android.package-archive' });
-        const arrayBuffer = await blob.arrayBuffer();
-        const uint8 = new Uint8Array(arrayBuffer);
-        let binary = '';
-        const chunkSize = 8192;
-        for (let i = 0; i < uint8.length; i += chunkSize) {
-          binary += String.fromCharCode(...uint8.subarray(i, i + chunkSize));
-        }
-        const base64Data = btoa(binary);
-
-        const { Filesystem, Directory } = await import('@capacitor/filesystem');
-
-        // Salva nella cartella cache dell'app
-        const fileName = `TaskFlow-v${remoteVersion.versionName}.apk`;
-        const savedFile = await Filesystem.writeFile({
-          path: fileName,
-          data: base64Data,
-          directory: Directory.Cache,
-        });
-
+        // Su Android: apri l'URL nel browser di sistema
+        // Il browser gestirà download + prompt di installazione APK
+        const { Browser } = await import('@capacitor/browser');
+        await Browser.open({ url: bustUrl, windowName: '_system' });
         setDownloadProgress(100);
-
-        // Ottieni URI nativo per l'intent di installazione
-        const fileUri = savedFile.uri;
-
-        // Apri l'APK per l'installazione tramite intent Android
-        try {
-          // Usa il WebView per triggerare l'intent di installazione
-          const intentUrl = `intent://${fileUri}#Intent;action=android.intent.action.VIEW;type=application/vnd.android.package-archive;end`;
-          window.location.href = intentUrl;
-        } catch {
-          // Fallback: apri con Browser plugin
-          try {
-            const { Browser } = await import('@capacitor/browser');
-            await Browser.open({ url: fileUri, windowName: '_system' });
-          } catch {
-            setError('APK scaricato. Apri il file manager per installare.');
-          }
-        }
-
         setDownloading(false);
-      } catch (err) {
-        setError(`Errore download: ${err.message}`);
+      } catch {
+        // Fallback: apri con window.open
+        window.open(bustUrl, '_system');
         setDownloading(false);
       }
     } else {
