@@ -31,6 +31,10 @@ import {
   calendarOutline,
   flameOutline,
   documentTextOutline,
+  downloadOutline,
+  cloudUploadOutline,
+  folderOutline,
+  trophyOutline,
 } from 'ionicons/icons';
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
@@ -38,6 +42,7 @@ import { useTasks } from '../hooks/useTasks';
 import { useTheme } from '../hooks/useTheme';
 import { useProfile } from '../hooks/useProfile';
 import VersionCheckCard from '../components/VersionCheckCard';
+import { exportTasksToCSV, downloadCSV, parseCSV, csvRowsToTaskPayloads } from '../services/csvService';
 import './Profile.css';
 
 const emojiOptions = [
@@ -48,7 +53,7 @@ const emojiOptions = [
 
 const Profile = () => {
   const { user, signOut } = useAuth();
-  const { stats } = useTasks(user?.id);
+  const { stats, tasks, createTask } = useTasks(user?.id);
   const { theme, setTheme } = useTheme();
   const { displayName, avatarEmoji, bio, updateProfile } = useProfile(user?.id);
   const history = useHistory();
@@ -59,6 +64,7 @@ const Profile = () => {
   const [editBio, setEditBio] = useState('');
   const [editEmoji, setEditEmoji] = useState('');
   const [saving, setSaving] = useState(false);
+  const [importing, setImporting] = useState(false);
 
   const openEditModal = () => {
     setEditName(displayName || '');
@@ -204,8 +210,16 @@ const Profile = () => {
           {/* Shortcuts */}
           <div className="section-label">Strumenti</div>
           <div className="profile-shortcuts">
+            <div className="shortcut-card" onClick={() => history.push('/projects')}>
+              <IonIcon icon={folderOutline} className="shortcut-icon indigo" />
+              <span className="shortcut-text">Progetti</span>
+            </div>
+            <div className="shortcut-card" onClick={() => history.push('/gamification')}>
+              <IonIcon icon={trophyOutline} className="shortcut-icon gold" />
+              <span className="shortcut-text">Gamification</span>
+            </div>
             <div className="shortcut-card" onClick={() => history.push('/tabs/calendar')}>
-              <IonIcon icon={calendarOutline} className="shortcut-icon indigo" />
+              <IonIcon icon={calendarOutline} className="shortcut-icon blue" />
               <span className="shortcut-text">Calendario</span>
             </div>
             <div className="shortcut-card" onClick={() => history.push('/tabs/habits')}>
@@ -224,6 +238,41 @@ const Profile = () => {
               <IonIcon icon={colorPaletteOutline} className="shortcut-icon orange" />
               <span className="shortcut-text">Categorie</span>
             </div>
+          </div>
+
+          {/* Import / Export */}
+          <div className="section-label">Dati</div>
+          <div className="profile-data-actions">
+            <IonButton expand="block" fill="outline" shape="round" onClick={() => {
+              const csv = exportTasksToCSV(tasks);
+              downloadCSV(csv);
+              present({ message: 'CSV esportato!', duration: 1500, color: 'success' });
+            }}>
+              <IonIcon icon={downloadOutline} slot="start" />
+              Esporta Task (CSV)
+            </IonButton>
+            <IonButton expand="block" fill="outline" shape="round" onClick={() => {
+              const input = document.createElement('input');
+              input.type = 'file';
+              input.accept = '.csv';
+              input.onchange = async (e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+                setImporting(true);
+                try {
+                  const text = await file.text();
+                  const rows = parseCSV(text);
+                  const payloads = csvRowsToTaskPayloads(rows, user.id);
+                  for (const p of payloads) await createTask(p);
+                  present({ message: `${payloads.length} task importati!`, duration: 2000, color: 'success' });
+                } catch { present({ message: 'Errore importazione', duration: 2000, color: 'danger' }); }
+                finally { setImporting(false); }
+              };
+              input.click();
+            }} disabled={importing}>
+              <IonIcon icon={cloudUploadOutline} slot="start" />
+              {importing ? 'Importando...' : 'Importa Task (CSV)'}
+            </IonButton>
           </div>
 
           {/* Theme Toggle */}

@@ -1,5 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { taskService } from '../services/taskService';
+import { notificationService } from '../services/notificationService';
+import { gamificationService } from '../services/gamificationService';
 import { supabase } from '../services/supabaseClient';
 import { Capacitor } from '@capacitor/core';
 
@@ -73,8 +75,8 @@ export function useTasks(userId) {
       setStats(statsData);
       setWeeklyStats(weeklyData);
       setCategories(catsData);
-      // Schedule reminders for due tasks
-      scheduleTaskReminders(tasksData);
+      // Schedule advanced reminders
+      notificationService.scheduleTaskReminders(tasksData);
     } catch (err) {
       console.error('Error loading tasks:', err);
     } finally {
@@ -135,6 +137,14 @@ export function useTasks(userId) {
     const task = tasks.find((t) => t.id === id);
     if (task && task.recurrence && task.recurrence !== 'none') {
       await taskService.createNextRecurrence(task);
+    }
+    // Award XP via gamification
+    if (userId) {
+      try {
+        const action = task?.priority === 'high' ? 'high_priority_complete' : 'task_complete';
+        await gamificationService.addXP(userId, action);
+        await gamificationService.checkAndAwardBadges(userId);
+      } catch { /* gamification tables may not exist yet */ }
     }
     return result;
   };

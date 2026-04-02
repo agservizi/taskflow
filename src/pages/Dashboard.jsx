@@ -29,6 +29,8 @@ import {
   sparklesOutline,
   rocketOutline,
   leafOutline,
+  folderOutline,
+  trophyOutline,
 } from 'ionicons/icons';
 import { useHistory } from 'react-router-dom';
 import {
@@ -228,6 +230,18 @@ const Dashboard = () => {
                 <IonIcon icon={timerOutline} />
               </div>
               <span>Focus Timer</span>
+            </button>
+            <button className="quick-action" onClick={() => history.push('/projects')}>
+              <div className="qa-icon" style={{ background: 'rgba(139,92,246,0.12)', color: '#8B5CF6' }}>
+                <IonIcon icon={folderOutline} />
+              </div>
+              <span>Progetti</span>
+            </button>
+            <button className="quick-action" onClick={() => history.push('/gamification')}>
+              <div className="qa-icon" style={{ background: 'rgba(245,158,11,0.12)', color: '#F59E0B' }}>
+                <IonIcon icon={trophyOutline} />
+              </div>
+              <span>XP & Badge</span>
             </button>
           </div>
 

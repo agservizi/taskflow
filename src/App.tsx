@@ -27,6 +27,8 @@ import Tasks from './pages/Tasks';
 import CreateTask from './pages/CreateTask';
 import TaskDetail from './pages/TaskDetail';
 import Profile from './pages/Profile';
+import Projects from './pages/Projects';
+import Gamification from './pages/Gamification';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -110,6 +112,8 @@ const App: React.FC = () => {
               <Route path="/tabs" component={AppTabs} />
               <Route exact path="/create-task" component={CreateTask} />
               <Route exact path="/task/:id" component={TaskDetail} />
+              <Route exact path="/projects" component={Projects} />
+              <Route exact path="/gamification" component={Gamification} />
               <Route exact path="/">
                 <Redirect to="/tabs/dashboard" />
               </Route>

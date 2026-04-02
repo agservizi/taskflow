@@ -371,6 +371,19 @@
   text-align: center;
 }
 
+/* Data actions */
+.profile-data-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.profile-data-actions ion-button {
+  --border-radius: 14px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
 /* Edit Profile Modal */
 .edit-avatar-section {
   text-align: center;

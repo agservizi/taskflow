@@ -21,12 +21,13 @@ import {
   useIonToast,
   IonModal,
 } from '@ionic/react';
-import { saveOutline, calendarOutline, flagOutline, layersOutline, checkmarkOutline, repeatOutline, pinOutline, pricetagOutline, documentTextOutline, bookmarkOutline, addOutline } from 'ionicons/icons';
+import { saveOutline, calendarOutline, flagOutline, layersOutline, checkmarkOutline, repeatOutline, pinOutline, pricetagOutline, documentTextOutline, bookmarkOutline, addOutline, sparklesOutline } from 'ionicons/icons';
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { useTasks } from '../hooks/useTasks';
 import { taskService } from '../services/taskService';
 import { templateService } from '../services/templateService';
+import { getTaskSuggestions } from '../services/aiSuggestionsService';
 import './CreateTask.css';
 
 const priorityOptions = [
@@ -70,11 +71,23 @@ const CreateTask = () => {
 
   const TAG_COLORS = ['#6366F1', '#EF4444', '#22C55E', '#F59E0B', '#EC4899', '#06B6D4', '#8B5CF6', '#14B8A6'];
 
+  const [suggestions, setSuggestions] = useState({});
+
   useEffect(() => {
     if (user?.id) {
       taskService.getTags(user.id).then(setTags).catch(() => {});
     }
   }, [user?.id]);
+
+  // AI suggerimenti quando cambia il titolo
+  useEffect(() => {
+    if (title.trim().length >= 3) {
+      const s = getTaskSuggestions(title, categories, tasks);
+      setSuggestions(s);
+    } else {
+      setSuggestions({});
+    }
+  }, [title, categories, tasks]);
 
   const handleSave = async () => {
     if (!title.trim()) {
@@ -164,6 +177,27 @@ const CreateTask = () => {
               className="form-input"
               fill="outline"
             />
+            {/* AI Suggestions Banner */}
+            {Object.keys(suggestions).length > 0 && (
+              <div className="ai-suggestions-banner">
+                <div className="ai-banner-title">
+                  <IonIcon icon={sparklesOutline} /> Suggerimenti AI
+                </div>
+                {suggestions.priority && (
+                  <button className="ai-suggestion-chip" onClick={() => { setPriority(suggestions.priority.value); }}>
+                    Priorità: {priorityOptions.find(p => p.value === suggestions.priority.value)?.emoji} {priorityOptions.find(p => p.value === suggestions.priority.value)?.label}
+                  </button>
+                )}
+                {suggestions.category && (
+                  <button className="ai-suggestion-chip" onClick={() => { setCategoryId(suggestions.category.value.id); }}>
+                    Categoria: {suggestions.category.value.name}
+                  </button>
+                )}
+                {suggestions.bestTime && (
+                  <span className="ai-suggestion-text">{suggestions.bestTime.label}</span>
+                )}
+              </div>
+            )}
           </div>
 
           <div className="form-group">

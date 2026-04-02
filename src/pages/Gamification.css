@@ -1,0 +1,95 @@
+.gamification-content {
+  --background: var(--ion-background-color, #f4f5f8);
+}
+.gam-container {
+  padding: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Level card */
+.gam-level-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(135deg, #4F46E5 0%, #6366F1 100%);
+  border-radius: 20px;
+  padding: 20px;
+  color: #fff;
+  margin-bottom: 16px;
+}
+.gam-level-ring { position: relative; width: 80px; height: 80px; flex-shrink: 0; }
+.gam-level-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.ring-bg { fill: none; stroke: rgba(255,255,255,0.2); stroke-width: 6; }
+.ring-fill { fill: none; stroke: #fff; stroke-width: 6; stroke-linecap: round; transition: stroke-dasharray 0.6s; }
+.ring-level {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-size: 24px; font-weight: 800;
+}
+.gam-level-info { flex: 1; }
+.gam-level-info h2 { margin: 0 0 4px; font-size: 20px; font-weight: 800; }
+.gam-xp-row { display: flex; align-items: center; gap: 6px; font-size: 14px; opacity: 0.9; margin-bottom: 8px; }
+.gam-next { opacity: 0.6; font-size: 12px; }
+.gam-bar { --background: rgba(255,255,255,0.2); --progress-background: #fff; border-radius: 6px; height: 6px; }
+
+/* Streak card */
+.gam-streak-card {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--ion-card-background, #fff);
+  border-radius: 16px; padding: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  margin-bottom: 20px;
+}
+.gam-streak-icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  background: rgba(239,68,68,0.1); display: flex; align-items: center; justify-content: center;
+}
+.gam-streak-icon ion-icon { font-size: 28px; color: #EF4444; }
+.gam-streak-info { flex: 1; }
+.gam-streak-info h3 { margin: 0 0 6px; font-weight: 700; font-size: 15px; }
+.gam-streak-numbers { display: flex; align-items: center; gap: 16px; }
+.streak-num { display: flex; flex-direction: column; }
+.streak-num strong { font-size: 22px; font-weight: 800; }
+.streak-num span { font-size: 11px; color: var(--ion-color-medium); }
+.streak-divider { width: 1px; height: 30px; background: var(--ion-color-light); }
+
+/* Section title */
+.gam-section-title {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 15px; font-weight: 700; margin: 0 0 12px;
+}
+.gam-section-title ion-badge { margin-left: auto; }
+
+/* Badges grid */
+.gam-badges-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 24px;
+}
+.gam-badge {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 14px 8px; border-radius: 14px; text-align: center; position: relative;
+  background: var(--ion-card-background, #fff);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  transition: transform 0.15s;
+}
+.gam-badge.locked { opacity: 0.35; filter: grayscale(1); }
+.gam-badge.earned { border: 2px solid #6366F1; }
+.gam-badge-icon { font-size: 28px; }
+.gam-badge-label { font-size: 11px; font-weight: 600; line-height: 1.2; }
+.gam-badge-check {
+  position: absolute; top: 4px; right: 4px; font-size: 14px; color: #6366F1;
+}
+
+/* XP Log */
+.gam-xp-log {
+  background: var(--ion-card-background, #fff);
+  border-radius: 14px; overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.gam-xp-entry {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 14px; border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+.gam-xp-entry:last-child { border-bottom: none; }
+.xp-entry-left { display: flex; align-items: center; gap: 10px; }
+.xp-entry-left span { font-size: 13px; text-transform: capitalize; }
+.xp-entry-date { font-size: 12px; color: var(--ion-color-medium); }

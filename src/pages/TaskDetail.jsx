@@ -38,6 +38,7 @@ import { useTasks } from '../hooks/useTasks';
 import { useFocusTimer } from '../hooks/useFocusTimer';
 import SubtaskList from '../components/SubtaskList';
 import FocusTimer from '../components/FocusTimer';
+import MarkdownRenderer from '../components/MarkdownRenderer';
 import './TaskDetail.css';
 
 const priorityConfig = {
@@ -249,7 +250,7 @@ const TaskDetail = () => {
                 <IonIcon icon={documentTextOutline} />
                 Note
               </h3>
-              <p className="detail-notes-text">{task.notes}</p>
+              <p className="detail-notes-text"><MarkdownRenderer content={task.notes} /></p>
             </div>
           )}
 
