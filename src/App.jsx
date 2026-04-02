@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback } from 'react';
-import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
+import { Redirect, Route, useHistory } from 'react-router-dom';
 import {
   IonApp,
   IonPage,
@@ -176,10 +176,10 @@ const AppTabs = () => {
   );
 };
 
-// Desktop layout – uses Switch instead of IonRouterOutlet to avoid page stacking
+// Desktop layout – IonRouterOutlet with animated={false} to prevent page stacking
 const DesktopApp = () => (
   <DesktopLayout>
-    <Switch>
+    <IonRouterOutlet animated={false}>
       <Route exact path="/tabs/dashboard" component={Dashboard} />
       <Route exact path="/tabs/tasks" component={Tasks} />
       <Route exact path="/tabs/profile" component={Profile} />
@@ -196,7 +196,7 @@ const DesktopApp = () => (
       <Route exact path="/tabs">
         <Redirect to="/tabs/dashboard" />
       </Route>
-    </Switch>
+    </IonRouterOutlet>
   </DesktopLayout>
 );
 
