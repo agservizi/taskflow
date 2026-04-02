@@ -1,7 +1,7 @@
 {
-  "versionCode": 10,
-  "versionName": "4.2.4",
+  "versionCode": 11,
+  "versionName": "4.3.0",
   "apkUrl": "https://taskflow-woad-six.vercel.app/releases/app-release.apk",
-  "releaseNotes": "Fix crash all'avvio. Focus Timer Dashboard funzionante.",
+  "releaseNotes": "Nuove funzionalità: Progetti, Gamification (XP/Badge), AI Suggerimenti, Import/Export CSV, Note Markdown, Notifiche avanzate.",
   "forceUpdate": false
 }
