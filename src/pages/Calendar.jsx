@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { motion } from 'framer-motion';
 import {
   IonPage, IonContent, IonHeader, IonToolbar, IonTitle,
   IonButtons, IonBackButton, IonButton, IonIcon, IonBadge,
@@ -95,7 +96,8 @@ const Calendar = () => {
       </IonHeader>
 
       <IonContent fullscreen className="cal-content">
-        <div className="cal-container">
+        <motion.div className="cal-container"
+          initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
           {/* Month Nav */}
           <div className="cal-month-nav">
             <IonButton fill="clear" onClick={prevMonth}>
@@ -153,11 +155,15 @@ const Calendar = () => {
                 <p className="cal-empty">Nessun task per questa data</p>
               ) : (
                 <div className="cal-task-list">
-                  {selectedTasks.map(t => (
-                    <div
+                  {selectedTasks.map((t, i) => (
+                    <motion.div
                       key={t.id}
                       className={`cal-task-item ${t.status === 'completed' ? 'cal-task-done' : ''}`}
                       onClick={() => history.push(`/tabs/task/${t.id}`)}
+                      initial={{ opacity: 0, x: -12 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.2, delay: i * 0.04 }}
+                      whileTap={{ scale: 0.97 }}
                     >
                       <div
                         className="cal-task-priority"
@@ -171,13 +177,13 @@ const Calendar = () => {
                           </IonBadge>
                         )}
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               )}
             </div>
           )}
-        </div>
+        </motion.div>
       </IonContent>
     </IonPage>
   );

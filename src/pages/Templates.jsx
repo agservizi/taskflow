@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import {
   IonPage, IonContent, IonHeader, IonToolbar, IonTitle,
   IonButtons, IonBackButton, IonButton, IonIcon, IonSpinner,
@@ -95,7 +96,8 @@ const Templates = () => {
       </IonHeader>
 
       <IonContent fullscreen className="tpl-content">
-        <div className="tpl-container">
+        <motion.div className="tpl-container"
+          initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
           {loading ? (
             <div className="tpl-loading"><IonSpinner name="crescent" /></div>
           ) : templates.length === 0 ? (
@@ -110,6 +112,12 @@ const Templates = () => {
                 const d = tpl.template_data || {};
                 return (
                   <div key={tpl.id} className="tpl-card">
+                    <motion.div
+                      initial={{ opacity: 0, y: 14 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.25, delay: templates.indexOf(tpl) * 0.06 }}
+                      whileTap={{ scale: 0.97 }}
+                    >
                     <div className="tpl-card-header">
                       <span className="tpl-name">{tpl.name}</span>
                       <div className="tpl-actions">
@@ -138,12 +146,13 @@ const Templates = () => {
                     <IonButton expand="block" size="small" shape="round" onClick={() => handleUse(tpl)} className="tpl-use-btn">
                       Usa Template
                     </IonButton>
+                    </motion.div>
                   </div>
                 );
               })}
             </div>
           )}
-        </div>
+        </motion.div>
       </IonContent>
     </IonPage>
   );

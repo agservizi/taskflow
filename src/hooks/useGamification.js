@@ -10,9 +10,11 @@ export function useGamification(userId) {
   const [recentXP, setRecentXP] = useState([]);
   const [newBadges, setNewBadges] = useState([]);
   const [leveledUp, setLeveledUp] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const loadData = useCallback(async () => {
-    if (!userId) return;
+    if (!userId) { setLoading(false); return; }
+    setLoading(true);
     try {
       const [xp, userBadges, log] = await Promise.all([
         gamificationService.getUserXP(userId),
@@ -27,6 +29,8 @@ export function useGamification(userId) {
       setProgress(gamificationService.getProgressToNext(xp.total_xp));
     } catch (err) {
       console.error('Gamification load error:', err);
+    } finally {
+      setLoading(false);
     }
   }, [userId]);
 
@@ -70,6 +74,7 @@ export function useGamification(userId) {
     dismissLevelUp,
     dismissNewBadges,
     refresh: loadData,
+    loading,
     allBadges: gamificationService.BADGES,
     xpRewards: gamificationService.XP_REWARDS,
   };

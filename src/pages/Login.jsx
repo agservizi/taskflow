@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import {
   IonPage,
   IonContent,
@@ -87,14 +88,16 @@ const Login = () => {
   return (
     <IonPage>
       <IonContent className="login-content" fullscreen>
-        <div className="login-container">
-          <div className="login-header">
+        <motion.div className="login-container"
+          initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.4, ease: 'easeOut' }}>
+          <motion.div className="login-header"
+            initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.1 }}>
             <div className="login-logo">
               <img src="/favicon.png" alt="TaskFlow" className="logo-img" />
               <h1>TaskFlow</h1>
             </div>
             <p className="login-subtitle">Organizza. Prioritizza. Completa.</p>
-          </div>
+          </motion.div>
 
           {showReset ? (
             <div className="login-form">
@@ -206,7 +209,7 @@ const Login = () => {
               </IonButton>
             </form>
           )}
-        </div>
+        </motion.div>
       </IonContent>
     </IonPage>
   );

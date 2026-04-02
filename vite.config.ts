@@ -10,6 +10,9 @@ export default defineConfig({
     react(),
     legacy()
   ],
+  resolve: {
+    dedupe: ['react', 'react-dom'],
+  },
   test: {
     globals: true,
     environment: 'jsdom',

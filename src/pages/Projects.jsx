@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { motion } from 'framer-motion';
 import {
   IonPage, IonContent, IonHeader, IonToolbar, IonTitle,
   IonButtons, IonBackButton, IonButton, IonIcon, IonModal,
@@ -91,7 +92,7 @@ const Projects = () => {
     <IonPage>
       <IonHeader className="ion-no-border">
         <IonToolbar>
-          <IonButtons slot="start"><IonBackButton defaultHref="/tabs/dashboard" /></IonButtons>
+          <IonButtons slot="start"><IonBackButton defaultHref="/tabs/dashboard" text="Indietro" /></IonButtons>
           <IonTitle>Progetti</IonTitle>
           <IonButton slot="end" fill="clear" onClick={() => { resetForm(); setShowCreate(true); }}>
             <IonIcon icon={addOutline} />
@@ -104,7 +105,8 @@ const Projects = () => {
           <IonRefresherContent />
         </IonRefresher>
 
-        <div className="projects-container">
+        <motion.div className="projects-container"
+          initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
           {loading ? (
             [1,2,3].map(i => <IonSkeletonText key={i} animated style={{ height: 100, borderRadius: 16, marginBottom: 12 }} />)
           ) : activeProjects.length === 0 ? (
@@ -112,14 +114,15 @@ const Projects = () => {
               <IonIcon icon={folderOutline} />
               <h3>Nessun progetto</h3>
               <p>Raggruppa i tuoi task in progetti per organizzarli meglio</p>
-              <IonButton shape="round" onClick={() => setShowCreate(true)}>
+              <IonButton size="small" shape="round" onClick={() => setShowCreate(true)}>
                 <IonIcon icon={addOutline} slot="start" /> Crea Progetto
               </IonButton>
             </div>
           ) : (
-            activeProjects.map(project => (
-              <div key={project.id} className="project-card" style={{ '--pc': project.color }} onClick={() => history.push(`/project/${project.id}`)}>
-                <div className="project-card-header">
+            activeProjects.map((project, i) => (
+              <motion.div key={project.id} className="project-card" style={{ '--pc': project.color }} onClick={() => history.push(`/project/${project.id}`)}
+                initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: i * 0.06 }}
+                whileTap={{ scale: 0.97 }}>                <div className="project-card-header">
                   <span className="project-emoji">{project.emoji}</span>
                   <div className="project-info">
                     <h3>{project.name}</h3>
@@ -141,7 +144,7 @@ const Projects = () => {
                   <IonBadge color="medium">{project.status}</IonBadge>
                   <span className="project-date">{new Date(project.created_at).toLocaleDateString('it-IT')}</span>
                 </div>
-              </div>
+              </motion.div>
             ))
           )}
 
@@ -159,7 +162,7 @@ const Projects = () => {
               ))}
             </>
           )}
-        </div>
+        </motion.div>
 
         {/* Create/Edit Modal */}
         <IonModal isOpen={showCreate} onDidDismiss={resetForm} className="project-modal">

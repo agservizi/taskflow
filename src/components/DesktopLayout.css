@@ -1,0 +1,528 @@
+/* ===== Desktop Layout ===== */
+.desktop-layout {
+  display: flex;
+  height: 100vh;
+  background: var(--ion-background-color, #0C1222);
+  overflow: hidden;
+}
+
+/* ===== Sidebar ===== */
+.desktop-sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: rgba(15, 20, 36, 0.95);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 16px 12px;
+  position: relative;
+  z-index: 100;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* Header / Logo */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  border-radius: 14px;
+  transition: background 0.2s;
+}
+.sidebar-header:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+.sidebar-logo-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+.sidebar-logo-text {
+  font-size: 20px;
+  font-weight: 800;
+  color: #E8ECF4;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+
+/* Create Button */
+.sidebar-create-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 14px;
+  background: linear-gradient(135deg, #4F46E5, #7C3AED);
+  border: none;
+  border-radius: 14px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: transform 0.15s, box-shadow 0.2s;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.sidebar-create-btn ion-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.sidebar-create-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+}
+.sidebar-create-btn:active {
+  transform: scale(0.97);
+}
+
+/* Navigation */
+.sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 2px;
+}
+.sidebar-nav::-webkit-scrollbar {
+  width: 3px;
+}
+.sidebar-nav::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px;
+  background: none;
+  border: none;
+  border-radius: 12px;
+  color: #8B92A8;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: left;
+  width: 100%;
+}
+.sidebar-nav-item ion-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.sidebar-nav-item:hover {
+  color: #C4CAD8;
+  background: rgba(255, 255, 255, 0.04);
+}
+.sidebar-nav-item.active {
+  color: #A5B4FC;
+  background: rgba(79, 70, 229, 0.1);
+}
+.nav-active-indicator {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 20px;
+  background: linear-gradient(180deg, #4F46E5, #7C3AED);
+  border-radius: 0 4px 4px 0;
+}
+
+/* Footer */
+.sidebar-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: 8px;
+}
+.sidebar-footer-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: none;
+  border: none;
+  border-radius: 12px;
+  color: #8B92A8;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: left;
+  width: 100%;
+}
+.sidebar-footer-btn ion-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.sidebar-footer-btn:hover {
+  color: #C4CAD8;
+  background: rgba(255, 255, 255, 0.04);
+}
+.sidebar-footer-btn.danger:hover {
+  color: #F87171;
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.sidebar-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #4F46E5, #7C3AED);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.sidebar-email {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;
+}
+
+/* Collapse Toggle */
+.sidebar-collapse-btn {
+  position: absolute;
+  right: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #1A1F33;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #8B92A8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s;
+  font-size: 14px;
+}
+.sidebar-collapse-btn:hover {
+  background: #252B42;
+  color: white;
+  border-color: rgba(79, 70, 229, 0.4);
+}
+
+/* ===== Main Content ===== */
+.desktop-main {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.desktop-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.desktop-content::-webkit-scrollbar {
+  width: 6px;
+}
+.desktop-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+}
+.desktop-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ===== Desktop Overrides for Ionic Pages ===== */
+/* Hide Ionic headers and toolbars on desktop - the sidebar handles navigation */
+.desktop-content ion-header {
+  display: none;
+}
+
+/* Remove Ionic tab bar on desktop */
+.desktop-layout ion-tab-bar {
+  display: none !important;
+}
+
+/* Make IonPage fill within desktop layout  */
+.desktop-content ion-page {
+  position: relative;
+  contain: none;
+}
+
+.desktop-content ion-content {
+  --background: transparent;
+}
+
+/* Override page containers for wider desktop layouts */
+.desktop-content .dashboard-container,
+.desktop-content .tasks-container,
+.desktop-content .profile-container,
+.desktop-content .detail-container,
+.desktop-content .create-container,
+.desktop-content .analytics-container,
+.desktop-content .categories-container,
+.desktop-content .cal-container,
+.desktop-content .tpl-container,
+.desktop-content .habits-container,
+.desktop-content .projects-container,
+.desktop-content .gam-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 40px;
+}
+
+/* Dashboard grid improvements for desktop */
+@media (min-width: 900px) {
+  .desktop-content .dash-quick-actions {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .desktop-content .dash-charts-row {
+    display: flex;
+    gap: 12px;
+  }
+
+  /* Analytics grid */
+  .desktop-content .analytics-streak-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Task list grid */
+  .desktop-content .tasks-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  /* Calendar wider */
+  .desktop-content .cal-grid {
+    max-width: 700px;
+  }
+
+  /* Projects grid - project-card items are direct children of projects-container */
+  .desktop-content .projects-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .desktop-content .projects-container > .empty-projects,
+  .desktop-content .projects-container > h3,
+  .desktop-content .projects-container > .section-title {
+    grid-column: 1 / -1;
+  }
+
+  /* Profile shortcuts grid */
+  .desktop-content .profile-shortcuts {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Categories grid */
+  .desktop-content .cat-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Habits grid */
+  .desktop-content .habits-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  /* Gamification badges */
+  .desktop-content .gam-badges-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Templates grid */
+  .desktop-content .tpl-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  /* Form pages - narrower for readability */
+  .desktop-content .create-container,
+  .desktop-content .detail-container {
+    max-width: 720px;
+  }
+
+  /* Reduce bottom padding — no tab bar on desktop */
+  .desktop-content .dashboard-container,
+  .desktop-content .tasks-container,
+  .desktop-content .profile-container,
+  .desktop-content .habits-container,
+  .desktop-content .tpl-container,
+  .desktop-content .projects-container,
+  .desktop-content .gam-container,
+  .desktop-content .cal-container,
+  .desktop-content .categories-container,
+  .desktop-content .analytics-container,
+  .desktop-content .create-container,
+  .desktop-content .detail-container {
+    padding-bottom: 48px;
+  }
+
+  /* Hide FABs on desktop (sidebar has create button) */
+  .desktop-content ion-fab {
+    display: none;
+  }
+
+  /* Dashboard: hero card side-by-side */
+  .desktop-content .dash-hero {
+    gap: 24px;
+  }
+  .desktop-content .dash-hero-ring {
+    width: 110px;
+    height: 110px;
+  }
+
+  /* Dashboard widgets side-by-side */
+  .desktop-content .dash-section + .dash-widget,
+  .desktop-content .dash-widget + .dash-widget {
+    display: inline-block;
+    width: calc(50% - 6px);
+    vertical-align: top;
+    margin-right: 12px;
+  }
+  .desktop-content .dash-widget:nth-child(even) {
+    margin-right: 0;
+  }
+
+  /* Calendar: grid + tasks side-by-side on desktop */
+  .desktop-content .cal-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+  .desktop-content .cal-container > .cal-month-nav,
+  .desktop-content .cal-container > .cal-weekdays {
+    width: 100%;
+  }
+  .desktop-content .cal-grid {
+    flex: 1;
+    min-width: 320px;
+    max-width: none;
+  }
+  .desktop-content .cal-task-section {
+    flex: 1;
+    min-width: 280px;
+    margin-top: 0;
+  }
+
+  /* Profile stats wider */
+  .desktop-content .profile-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .desktop-content .profile-stat-card {
+    padding: 22px 12px;
+  }
+}
+
+/* Wide desktop (1200px+) */
+@media (min-width: 1200px) {
+  .desktop-content .dashboard-container,
+  .desktop-content .analytics-container {
+    max-width: 1100px;
+  }
+
+  .desktop-content .tasks-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .desktop-content .tpl-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .desktop-content .profile-shortcuts {
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  .desktop-content .gam-badges-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .desktop-content .projects-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .desktop-content .habits-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .desktop-content .cat-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* ===== Desktop Hover Effects ===== */
+@media (hover: hover) {
+  .desktop-content .project-card:hover,
+  .desktop-content .tpl-card:hover,
+  .desktop-content .habit-card:hover,
+  .desktop-content .cal-task-item:hover,
+  .desktop-content .dash-widget:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .desktop-content .dash-hero:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+    transition: box-shadow 0.2s;
+  }
+}
+
+/* ===== Light Theme Support ===== */
+body.light .desktop-sidebar {
+  background: rgba(248, 250, 252, 0.95);
+  border-right-color: rgba(0, 0, 0, 0.08);
+}
+body.light .sidebar-logo-text {
+  color: #1E293B;
+}
+body.light .sidebar-nav-item {
+  color: #64748B;
+}
+body.light .sidebar-nav-item:hover {
+  color: #334155;
+  background: rgba(0, 0, 0, 0.04);
+}
+body.light .sidebar-nav-item.active {
+  color: #4F46E5;
+  background: rgba(79, 70, 229, 0.08);
+}
+body.light .sidebar-footer-btn {
+  color: #64748B;
+}
+body.light .sidebar-footer-btn:hover {
+  color: #334155;
+  background: rgba(0, 0, 0, 0.04);
+}
+body.light .sidebar-collapse-btn {
+  background: #F1F5F9;
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #64748B;
+}
+body.light .sidebar-collapse-btn:hover {
+  background: #E2E8F0;
+  color: #1E293B;
+}

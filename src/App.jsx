@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import React, { useState, useRef, useCallback } from 'react';
+import { Redirect, Route, useHistory } from 'react-router-dom';
 import {
   IonApp,
   IonPage,
@@ -9,6 +9,7 @@ import {
   IonTabButton,
   IonIcon,
   IonLabel,
+  IonActionSheet,
   setupIonicReact,
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
@@ -17,12 +18,19 @@ import {
   listOutline,
   addCircleOutline,
   personOutline,
+  checkmarkCircleOutline,
+  folderOutline,
+  leafOutline,
+  documentTextOutline,
+  closeOutline,
 } from 'ionicons/icons';
 
 import { useAuth } from './hooks/useAuth';
 import { useTheme } from './hooks/useTheme';
+import useDesktop from './hooks/useDesktop';
 
 import SplashScreen from './components/SplashScreen';
+import DesktopLayout from './components/DesktopLayout';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Tasks from './pages/Tasks';
@@ -35,6 +43,8 @@ import Categories from './pages/Categories';
 import Calendar from './pages/Calendar';
 import Habits from './pages/Habits';
 import Templates from './pages/Templates';
+import Projects from './pages/Projects';
+import Gamification from './pages/Gamification';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -78,7 +88,35 @@ const GuestGuard = ({ component: Component, ...rest }) => {
   return <Component {...rest} />;
 };
 
-const AppTabs = () => (
+const AppTabs = () => {
+  const history = useHistory();
+  const [showQuickCreate, setShowQuickCreate] = useState(false);
+  const longPressTimer = useRef(null);
+  const didLongPress = useRef(false);
+
+  const handlePointerDown = useCallback(() => {
+    didLongPress.current = false;
+    longPressTimer.current = setTimeout(() => {
+      didLongPress.current = true;
+      setShowQuickCreate(true);
+    }, 500);
+  }, []);
+
+  const handlePointerUp = useCallback(() => {
+    if (longPressTimer.current) {
+      clearTimeout(longPressTimer.current);
+      longPressTimer.current = null;
+    }
+  }, []);
+
+  const handleCreateClick = useCallback((e) => {
+    if (didLongPress.current) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  }, []);
+
+  return (
   <IonTabs>
     <IonRouterOutlet>
       <Route exact path="/tabs/dashboard" component={Dashboard} />
@@ -92,6 +130,8 @@ const AppTabs = () => (
       <Route exact path="/tabs/calendar" component={Calendar} />
       <Route exact path="/tabs/habits" component={Habits} />
       <Route exact path="/tabs/templates" component={Templates} />
+      <Route exact path="/tabs/projects" component={Projects} />
+      <Route exact path="/tabs/gamification" component={Gamification} />
       <Route exact path="/tabs">
         <Redirect to="/tabs/dashboard" />
       </Route>
@@ -105,7 +145,12 @@ const AppTabs = () => (
         <IonIcon icon={listOutline} />
         <IonLabel>Task</IonLabel>
       </IonTabButton>
-      <IonTabButton tab="create" href="/tabs/create">
+      <IonTabButton tab="create" href="/tabs/create"
+        onPointerDown={handlePointerDown}
+        onPointerUp={handlePointerUp}
+        onPointerLeave={handlePointerUp}
+        onClick={handleCreateClick}
+      >
         <IonIcon icon={addCircleOutline} />
         <IonLabel>Nuovo</IonLabel>
       </IonTabButton>
@@ -114,11 +159,55 @@ const AppTabs = () => (
         <IonLabel>Profilo</IonLabel>
       </IonTabButton>
     </IonTabBar>
+
+    <IonActionSheet
+      isOpen={showQuickCreate}
+      onDidDismiss={() => setShowQuickCreate(false)}
+      header="Crea Nuovo"
+      buttons={[
+        { text: 'Nuovo Task', icon: checkmarkCircleOutline, handler: () => history.push('/tabs/create') },
+        { text: 'Nuovo Progetto', icon: folderOutline, handler: () => history.push('/tabs/projects') },
+        { text: 'Nuova Abitudine', icon: leafOutline, handler: () => history.push('/tabs/habits') },
+        { text: 'Da Template', icon: documentTextOutline, handler: () => history.push('/tabs/templates') },
+        { text: 'Annulla', icon: closeOutline, role: 'cancel' },
+      ]}
+    />
   </IonTabs>
+  );
+};
+
+// Desktop layout – routes without IonTabs
+const DesktopApp = () => (
+  <DesktopLayout>
+    <IonRouterOutlet>
+      <Route exact path="/tabs/dashboard" component={Dashboard} />
+      <Route exact path="/tabs/tasks" component={Tasks} />
+      <Route exact path="/tabs/profile" component={Profile} />
+      <Route exact path="/tabs/create" component={CreateTask} />
+      <Route exact path="/tabs/edit/:id" component={EditTask} />
+      <Route exact path="/tabs/task/:id" component={TaskDetail} />
+      <Route exact path="/tabs/analytics" component={Analytics} />
+      <Route exact path="/tabs/categories" component={Categories} />
+      <Route exact path="/tabs/calendar" component={Calendar} />
+      <Route exact path="/tabs/habits" component={Habits} />
+      <Route exact path="/tabs/templates" component={Templates} />
+      <Route exact path="/tabs/projects" component={Projects} />
+      <Route exact path="/tabs/gamification" component={Gamification} />
+      <Route exact path="/tabs">
+        <Redirect to="/tabs/dashboard" />
+      </Route>
+    </IonRouterOutlet>
+  </DesktopLayout>
 );
 
-// Wrapper to pass auth guard to AppTabs
-const ProtectedTabs = (props) => <AuthGuard component={AppTabs} {...props} />;
+// Switches between mobile tabs and desktop sidebar layout
+const LayoutSwitcher = () => {
+  const isDesktop = useDesktop();
+  return isDesktop ? <DesktopApp /> : <AppTabs />;
+};
+
+// Wrappers with auth guards
+const ProtectedContent = (props) => <AuthGuard component={LayoutSwitcher} {...props} />;
 const GuestLogin = (props) => <GuestGuard component={Login} {...props} />;
 
 const App = () => {
@@ -134,7 +223,7 @@ const App = () => {
       <IonReactRouter>
         <IonRouterOutlet>
           <Route path="/login" component={GuestLogin} />
-          <Route path="/tabs" component={ProtectedTabs} />
+          <Route path="/tabs" component={ProtectedContent} />
           <Route exact path="/">
             <Redirect to="/tabs/dashboard" />
           </Route>

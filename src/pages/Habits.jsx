@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import {
   IonPage, IonContent, IonHeader, IonToolbar, IonTitle,
   IonButtons, IonBackButton, IonButton, IonIcon,
@@ -86,7 +87,8 @@ const Habits = () => {
           <IonRefresherContent />
         </IonRefresher>
 
-        <div className="habits-container">
+        <motion.div className="habits-container"
+          initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
           {loading ? (
             <div className="habits-loading"><IonSpinner name="crescent" /></div>
           ) : habits.length === 0 ? (
@@ -106,7 +108,10 @@ const Habits = () => {
                 const done = count >= target;
                 const streak = streaks[h.id] || 0;
                 return (
-                  <div key={h.id} className={`habit-card ${done ? 'habit-done' : ''}`} style={{ '--habit-color': h.color }}>
+                  <motion.div key={h.id} className={`habit-card ${done ? 'habit-done' : ''}`} style={{ '--habit-color': h.color }}
+                    initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: habits.indexOf(h) * 0.06 }}
+                    whileTap={{ scale: 0.97 }}>
                     <div className="habit-main" onClick={() => handleToggle(h.id, target)}>
                       <span className="habit-emoji">{h.emoji}</span>
                       <div className="habit-info">
@@ -148,12 +153,12 @@ const Habits = () => {
                         <IonIcon icon={trashOutline} />
                       </button>
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })}
             </div>
           )}
-        </div>
+        </motion.div>
 
         {/* Add Habit Modal */}
         <IonModal

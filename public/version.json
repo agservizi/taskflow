@@ -1,7 +1,7 @@
 {
-  "versionCode": 11,
-  "versionName": "4.3.0",
+  "versionCode": 12,
+  "versionName": "4.4.0",
   "apkUrl": "https://taskflow-woad-six.vercel.app/releases/app-release.apk",
-  "releaseNotes": "Nuove funzionalità: Progetti, Gamification (XP/Badge), AI Suggerimenti, Import/Export CSV, Note Markdown, Notifiche avanzate.",
+  "releaseNotes": "Nuovo layout Desktop con sidebar navigazione, animazioni Framer Motion globali, logo/favicon professionale riprogettato.",
   "forceUpdate": false
 }

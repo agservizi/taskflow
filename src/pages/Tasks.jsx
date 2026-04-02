@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { motion } from 'framer-motion';
 import {
   IonPage,
   IonContent,
@@ -352,7 +353,8 @@ const Tasks = () => {
           </div>
         )}
 
-        <div className="tasks-container">
+        <motion.div className="tasks-container"
+          initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
           {/* Pinned Tasks */}
           {!bulkMode && pinnedTasks.length > 0 && filter !== 'completed' && (
             <div className="pinned-section">
@@ -408,7 +410,7 @@ const Tasks = () => {
               ))}
             </IonList>
           )}
-        </div>
+        </motion.div>
 
         <IonFab vertical="bottom" horizontal="end" slot="fixed" className="tasks-fab">
           <IonFabButton routerLink="/tabs/create">

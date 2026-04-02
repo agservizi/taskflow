@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { motion } from 'framer-motion';
 import {
   IonPage, IonContent, IonHeader, IonToolbar, IonTitle,
   IonButtons, IonBackButton, IonProgressBar, IonBadge,
@@ -37,7 +38,7 @@ const Gamification = () => {
     <IonPage>
       <IonHeader className="ion-no-border">
         <IonToolbar>
-          <IonButtons slot="start"><IonBackButton defaultHref="/tabs/dashboard" /></IonButtons>
+          <IonButtons slot="start"><IonBackButton defaultHref="/tabs/dashboard" text="Indietro" /></IonButtons>
           <IonTitle>Gamification</IonTitle>
         </IonToolbar>
       </IonHeader>
@@ -47,13 +48,15 @@ const Gamification = () => {
           <IonRefresherContent />
         </IonRefresher>
 
-        <div className="gam-container">
+        <motion.div className="gam-container"
+          initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
           {loading ? (
             [1,2,3].map(i => <IonSkeletonText key={i} animated style={{ height: 80, borderRadius: 16, marginBottom: 12 }} />)
           ) : (
             <>
               {/* Level Card */}
-              <div className="gam-level-card">
+              <motion.div className="gam-level-card"
+                initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
                 <div className="gam-level-ring">
                   <svg viewBox="0 0 100 100">
                     <circle cx="50" cy="50" r="42" className="ring-bg" />
@@ -63,7 +66,7 @@ const Gamification = () => {
                   <span className="ring-level">{level}</span>
                 </div>
                 <div className="gam-level-info">
-                  <h2>{levelInfo?.name || 'Principiante'}</h2>
+                  <h2>{levelInfo?.title || 'Principiante'}</h2>
                   <div className="gam-xp-row">
                     <IonIcon icon={starOutline} />
                     <span>{xp} XP</span>
@@ -71,10 +74,11 @@ const Gamification = () => {
                   </div>
                   <IonProgressBar value={progress / 100} color="primary" className="gam-bar" />
                 </div>
-              </div>
+              </motion.div>
 
               {/* Streak */}
-              <div className="gam-streak-card">
+              <motion.div className="gam-streak-card"
+                initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35, delay: 0.1 }}>
                 <div className="gam-streak-icon">
                   <IonIcon icon={flameOutline} />
                 </div>
@@ -92,7 +96,7 @@ const Gamification = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Badges */}
               <h3 className="gam-section-title">
@@ -103,11 +107,14 @@ const Gamification = () => {
                 {ALL_BADGES.map(key => {
                   const earned = earnedBadgeKeys.has(key);
                   return (
-                    <div key={key} className={`gam-badge ${earned ? 'earned' : 'locked'}`}>
+                    <motion.div key={key} className={`gam-badge ${earned ? 'earned' : 'locked'}`}
+                      initial={{ opacity: 0, scale: 0.85 }} animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.25, delay: ALL_BADGES.indexOf(key) * 0.03 }}
+                      whileTap={{ scale: 0.93 }}>
                       <span className="gam-badge-icon">{BADGE_ICONS[key]}</span>
                       <span className="gam-badge-label">{BADGE_LABELS[key]}</span>
                       {earned && <IonIcon icon={trophyOutline} className="gam-badge-check" />}
-                    </div>
+                    </motion.div>
                   );
                 })}
               </div>
@@ -135,7 +142,7 @@ const Gamification = () => {
               )}
             </>
           )}
-        </div>
+        </motion.div>
       </IonContent>
     </IonPage>
   );

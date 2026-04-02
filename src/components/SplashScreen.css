@@ -59,7 +59,7 @@
 .splash-icon {
   width: 96px;
   height: 96px;
-  background: linear-gradient(135deg, #4F46E5, #7C3AED);
+  background: none;
   border-radius: 26px;
   display: flex;
   align-items: center;
@@ -67,13 +67,14 @@
   position: relative;
   z-index: 2;
   box-shadow: 0 8px 32px rgba(79, 70, 229, 0.35);
+  overflow: hidden;
 }
 
 .splash-icon-img {
-  width: 54px;
-  height: 54px;
-  object-fit: contain;
-  filter: brightness(0) invert(1);
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 26px;
 }
 
 .splash-ring {

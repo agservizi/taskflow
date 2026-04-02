@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { motion } from 'framer-motion';
 import {
   IonPage,
   IonContent,
@@ -169,28 +170,33 @@ const Analytics = () => {
       </IonHeader>
 
       <IonContent fullscreen className="analytics-content">
-        <div className="analytics-container">
+        <motion.div className="analytics-container"
+          initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
             {/* Streak Cards */}
             <div className="analytics-streak-row">
-              <div className="streak-card">
+              <motion.div className="streak-card"
+                initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25, delay: 0 }}>
                 <IonIcon icon={flameOutline} className="streak-icon fire" />
                 <span className="streak-value">{streak}</span>
                 <span className="streak-label">Streak attuale</span>
-              </div>
-              <div className="streak-card">
+              </motion.div>
+              <motion.div className="streak-card"
+                initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25, delay: 0.06 }}>
                 <IonIcon icon={ribbonOutline} className="streak-icon record" />
                 <span className="streak-value">{bestStreak}</span>
                 <span className="streak-label">Miglior streak</span>
-              </div>
-              <div className="streak-card">
+              </motion.div>
+              <motion.div className="streak-card"
+                initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25, delay: 0.12 }}>
                 <IonIcon icon={trendingUpOutline} className="streak-icon avg" />
                 <span className="streak-value">{avgPerDay}</span>
                 <span className="streak-label">Media/giorno</span>
-              </div>
+              </motion.div>
             </div>
 
             {/* Completion Rate Ring */}
-            <div className="analytics-card rate-card">
+            <motion.div className="analytics-card rate-card"
+              initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.15 }}>
               <div className="rate-header">
                 <IonIcon icon={checkmarkCircleOutline} />
                 <span>Tasso di completamento</span>
@@ -211,7 +217,7 @@ const Analytics = () => {
               <div className="rate-stats">
                 <span>{stats.completed} completati su {stats.total}</span>
               </div>
-            </div>
+            </motion.div>
 
             {/* Period Selector */}
             <IonSegment
@@ -231,7 +237,8 @@ const Analytics = () => {
             </IonSegment>
 
             {/* Completion Trend Chart */}
-            <div className="analytics-card">
+            <motion.div className="analytics-card"
+              initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.2 }}>
               <h3 className="card-title">
                 <IonIcon icon={calendarOutline} />
                 Andamento completamento
@@ -252,10 +259,11 @@ const Analytics = () => {
                   <Bar dataKey="completati" fill="#22C55E" radius={[4, 4, 0, 0]} name="Completati" />
                 </BarChart>
               </ResponsiveContainer>
-            </div>
+            </motion.div>
 
             {/* Category Distribution */}
-            <div className="analytics-card">
+            <motion.div className="analytics-card"
+              initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.25 }}>
               <h3 className="card-title">
                 <IonIcon icon={pieChartOutline} />
                 Distribuzione Categorie
@@ -296,10 +304,11 @@ const Analytics = () => {
               ) : (
                 <p className="no-data">Nessun dato disponibile</p>
               )}
-            </div>
+            </motion.div>
 
             {/* Priority Distribution */}
-            <div className="analytics-card">
+            <motion.div className="analytics-card"
+              initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.3 }}>
               <h3 className="card-title">
                 <IonIcon icon={timeOutline} />
                 Distribuzione Priorità
@@ -325,8 +334,8 @@ const Analytics = () => {
               ) : (
                 <p className="no-data">Nessun dato disponibile</p>
               )}
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
       </IonContent>
     </IonPage>
   );

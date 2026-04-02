@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { motion } from 'framer-motion';
 import {
   IonPage,
   IonContent,
@@ -197,9 +198,11 @@ const TaskDetail = () => {
       </IonHeader>
 
       <IonContent fullscreen className="detail-content">
-        <div className="detail-container">
+        <motion.div className="detail-container"
+          initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
           {/* Status & Priority */}
-          <div className="detail-badges">
+          <motion.div className="detail-badges"
+            initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.25 }}>
             <IonBadge
               className="detail-badge"
               style={{ '--background': status.color + '18', color: status.color }}
@@ -231,10 +234,13 @@ const TaskDetail = () => {
                 Fissato
               </IonBadge>
             )}
-          </div>
+          </motion.div>
 
           {/* Title */}
-          <h1 className="detail-title">{task.title}</h1>
+          <motion.h1 className="detail-title"
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3, delay: 0.1 }}>
+            {task.title}
+          </motion.h1>
 
           {/* Description */}
           {task.description && (
@@ -273,7 +279,8 @@ const TaskDetail = () => {
           )}
 
           {/* Info Cards */}
-          <div className="detail-info-grid">
+          <motion.div className="detail-info-grid"
+            initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.15 }}>
             {task.due_date && (
               <div className="detail-info-card">
                 <IonIcon icon={calendarOutline} style={{ color: '#4F46E5' }} />
@@ -306,7 +313,7 @@ const TaskDetail = () => {
                 </div>
               </div>
             )}
-          </div>
+          </motion.div>
 
           {/* Subtasks / Checklist */}
           <SubtaskList
@@ -318,7 +325,8 @@ const TaskDetail = () => {
           />
 
           {/* Actions */}
-          <div className="detail-actions">
+          <motion.div className="detail-actions"
+            initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.2 }}>
             {task.status !== 'completed' && (
               <>
                 <IonButton
@@ -354,8 +362,8 @@ const TaskDetail = () => {
               <IonIcon icon={trashOutline} slot="start" />
               Elimina
             </IonButton>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         <IonActionSheet
           isOpen={showActions}

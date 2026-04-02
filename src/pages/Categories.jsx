@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import {
   IonPage,
   IonContent,
@@ -117,16 +118,19 @@ const Categories = () => {
       </IonHeader>
 
       <IonContent fullscreen className="categories-content">
-        <div className="categories-container">
+        <motion.div className="categories-container"
+          initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
           {/* Preset Categories */}
           <div className="cat-section">
             <h2 className="cat-section-title">Categorie Predefinite</h2>
             <div className="cat-grid">
-              {presetCategories.map((cat) => (
-                <div key={cat.id} className="cat-chip">
+              {presetCategories.map((cat, i) => (
+                <motion.div key={cat.id} className="cat-chip"
+                  initial={{ opacity: 0, scale: 0.85 }} animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.2, delay: i * 0.03 }}>
                   <span className="cat-chip-dot" style={{ backgroundColor: cat.color }} />
                   <span className="cat-chip-name">{cat.name}</span>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -180,8 +184,10 @@ const Categories = () => {
                 </div>
               ) : (
                 <div className="cat-custom-list">
-                  {customCategories.map((cat) => (
-                    <div key={cat.id} className="cat-custom-item">
+                  {customCategories.map((cat, i) => (
+                    <motion.div key={cat.id} className="cat-custom-item"
+                      initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.2, delay: i * 0.04 }}>
                       <span className="cat-chip-dot" style={{ backgroundColor: cat.color }} />
                       <span className="cat-custom-name">{cat.name}</span>
                       <IonButton
@@ -192,12 +198,12 @@ const Categories = () => {
                       >
                         <IonIcon icon={trashOutline} />
                       </IonButton>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               )}
           </div>
-        </div>
+        </motion.div>
       </IonContent>
     </IonPage>
   );

@@ -62,6 +62,8 @@ const AppTabs: React.FC = () => (
       <Route exact path="/tabs/dashboard" component={Dashboard} />
       <Route exact path="/tabs/tasks" component={Tasks} />
       <Route exact path="/tabs/profile" component={Profile} />
+      <Route exact path="/tabs/projects" component={Projects} />
+      <Route exact path="/tabs/gamification" component={Gamification} />
       <Route exact path="/tabs">
         <Redirect to="/tabs/dashboard" />
       </Route>
@@ -112,8 +114,6 @@ const App: React.FC = () => {
               <Route path="/tabs" component={AppTabs} />
               <Route exact path="/create-task" component={CreateTask} />
               <Route exact path="/task/:id" component={TaskDetail} />
-              <Route exact path="/projects" component={Projects} />
-              <Route exact path="/gamification" component={Gamification} />
               <Route exact path="/">
                 <Redirect to="/tabs/dashboard" />
               </Route>

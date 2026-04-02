@@ -22,6 +22,6 @@
     }
   ],
   "rewrites": [
-    { "source": "/((?!version\\.json|releases/|favicon\\.png).*)", "destination": "/index.html" }
+    { "source": "/((?!version\\.json|releases/|favicon\\.png|favicon\\.svg|icon-.*\\.png).*)", "destination": "/index.html" }
   ]
 }

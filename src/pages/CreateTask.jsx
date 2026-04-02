@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import {
   IonPage,
   IonContent,
@@ -167,7 +168,8 @@ const CreateTask = () => {
       </IonHeader>
 
       <IonContent fullscreen className="create-content">
-        <div className="create-container">
+        <motion.div className="create-container"
+          initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
           <div className="form-group">
             <IonLabel className="form-label">Titolo *</IonLabel>
             <IonInput
@@ -585,7 +587,7 @@ const CreateTask = () => {
               </div>
             </IonContent>
           </IonModal>
-        </div>
+        </motion.div>
       </IonContent>
     </IonPage>
   );

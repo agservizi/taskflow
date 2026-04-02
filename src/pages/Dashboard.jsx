@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { motion } from 'framer-motion';
 import {
   IonPage,
   IonContent,
@@ -152,14 +153,16 @@ const Dashboard = () => {
         <div className="dashboard-container">
           {/* Update Banner */}
           {updateAvailable && (
-            <div className="dashboard-update-banner" onClick={downloadAndInstall}>
+            <motion.div className="dashboard-update-banner" onClick={downloadAndInstall}
+              initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
               <IonIcon icon={cloudDownloadOutline} />
               <span>Aggiornamento v{remoteVersion?.versionName} disponibile — Tocca per aggiornare</span>
-            </div>
+            </motion.div>
           )}
 
           {/* ===== HERO CARD – Panoramica rapida ===== */}
-          <div className="dash-hero">
+          <motion.div className="dash-hero"
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, ease: 'easeOut' }}>
             <div className="dash-hero-left">
               <div className="dash-hero-ring">
                 <svg viewBox="0 0 100 100">
@@ -203,50 +206,52 @@ const Dashboard = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* ===== QUICK ACTIONS ===== */}
-          <div className="dash-quick-actions">
-            <button className="quick-action" onClick={() => history.push('/tabs/create')}>
+          <motion.div className="dash-quick-actions"
+            initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35, delay: 0.1 }}>
+            <motion.button className="quick-action" onClick={() => history.push('/tabs/create')} whileTap={{ scale: 0.93 }}>
               <div className="qa-icon" style={{ background: 'rgba(79,70,229,0.12)', color: '#4F46E5' }}>
                 <IonIcon icon={addOutline} />
               </div>
               <span>Nuovo</span>
-            </button>
-            <button className="quick-action" onClick={() => history.push('/tabs/calendar')}>
+            </motion.button>
+            <motion.button className="quick-action" onClick={() => history.push('/tabs/calendar')} whileTap={{ scale: 0.93 }}>
               <div className="qa-icon" style={{ background: 'rgba(99,102,241,0.12)', color: '#6366F1' }}>
                 <IonIcon icon={calendarOutline} />
               </div>
               <span>Calendario</span>
-            </button>
-            <button className="quick-action" onClick={() => history.push('/tabs/habits')}>
+            </motion.button>
+            <motion.button className="quick-action" onClick={() => history.push('/tabs/habits')} whileTap={{ scale: 0.93 }}>
               <div className="qa-icon" style={{ background: 'rgba(34,197,94,0.12)', color: '#22C55E' }}>
                 <IonIcon icon={flameOutline} />
               </div>
               <span>Abitudini</span>
-            </button>
-            <button className="quick-action" onClick={() => { focusTimer.start(null, '', 1500); setShowFocusTimer(true); }}>
+            </motion.button>
+            <motion.button className="quick-action" onClick={() => { focusTimer.start(null, '', 1500); setShowFocusTimer(true); }} whileTap={{ scale: 0.93 }}>
               <div className="qa-icon" style={{ background: 'rgba(239,68,68,0.12)', color: '#EF4444' }}>
                 <IonIcon icon={timerOutline} />
               </div>
               <span>Focus Timer</span>
-            </button>
-            <button className="quick-action" onClick={() => history.push('/projects')}>
+            </motion.button>
+            <motion.button className="quick-action" onClick={() => history.push('/tabs/projects')} whileTap={{ scale: 0.93 }}>
               <div className="qa-icon" style={{ background: 'rgba(139,92,246,0.12)', color: '#8B5CF6' }}>
                 <IonIcon icon={folderOutline} />
               </div>
               <span>Progetti</span>
-            </button>
-            <button className="quick-action" onClick={() => history.push('/gamification')}>
+            </motion.button>
+            <motion.button className="quick-action" onClick={() => history.push('/tabs/gamification')} whileTap={{ scale: 0.93 }}>
               <div className="qa-icon" style={{ background: 'rgba(245,158,11,0.12)', color: '#F59E0B' }}>
                 <IonIcon icon={trophyOutline} />
               </div>
               <span>XP & Badge</span>
-            </button>
-          </div>
+            </motion.button>
+          </motion.div>
 
           {/* ===== CHARTS ROW – Area + Donut ===== */}
-          <div className="dash-charts-row">
+          <motion.div className="dash-charts-row"
+            initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35, delay: 0.2 }}>
             {/* Area Chart – Produttività settimanale */}
             <div className="dash-chart-card dash-chart-main">
               <h3 className="dash-card-title">
@@ -318,11 +323,12 @@ const Dashboard = () => {
                 </div>
               )}
             </div>
-          </div>
+          </motion.div>
 
           {/* ===== HABITS WIDGET ===== */}
           {habits.length > 0 && (
-            <div className="dash-widget" onClick={() => history.push('/tabs/habits')}>
+            <motion.div className="dash-widget" onClick={() => history.push('/tabs/habits')}
+              initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35, delay: 0.25 }}>
               <div className="dash-widget-header">
                 <h3 className="dash-card-title">
                   <IonIcon icon={flameOutline} />
@@ -354,11 +360,11 @@ const Dashboard = () => {
                   <IonIcon icon={flameOutline} /> Streak migliore: <strong>{bestStreak} giorni</strong>
                 </div>
               )}
-            </div>
+            </motion.div>
           )}
 
           {/* ===== FOCUS TIMER WIDGET ===== */}
-          <div className="dash-widget dash-focus-widget" onClick={() => { if (!focusTimer.isRunning) { focusTimer.start(null, '', 1500); setShowFocusTimer(true); } else { setShowFocusTimer(true); } }}>
+          <motion.div className="dash-widget dash-focus-widget" onClick={() => { if (!focusTimer.isRunning) { focusTimer.start(null, '', 1500); setShowFocusTimer(true); } else { setShowFocusTimer(true); } }}>
             <div className="dash-widget-header">
               <h3 className="dash-card-title">
                 <IonIcon icon={timerOutline} />
@@ -380,11 +386,12 @@ const Dashboard = () => {
                 <span>Oggi</span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* ===== OVERDUE ALERT ===== */}
           {overdueTasks.length > 0 && (
-            <div className="dash-section">
+            <motion.div className="dash-section"
+              initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35, delay: 0.35 }}>
               <div className="dash-section-header">
                 <h3 className="dash-card-title dash-title-danger">
                   <IonIcon icon={alertCircleOutline} />
@@ -397,12 +404,13 @@ const Dashboard = () => {
               {overdueTasks.slice(0, 3).map(task => (
                 <TaskCard key={task.id} task={task} onClick={() => history.push(`/tabs/task/${task.id}`)} />
               ))}
-            </div>
+            </motion.div>
           )}
 
           {/* ===== PINNED TASKS ===== */}
           {pinnedTasks.length > 0 && (
-            <div className="dash-section">
+            <motion.div className="dash-section"
+              initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35, delay: 0.4 }}>
               <div className="dash-section-header">
                 <h3 className="dash-card-title">
                   📌 Fissati
@@ -411,11 +419,12 @@ const Dashboard = () => {
               {pinnedTasks.slice(0, 3).map(task => (
                 <TaskCard key={task.id} task={task} onClick={() => history.push(`/tabs/task/${task.id}`)} />
               ))}
-            </div>
+            </motion.div>
           )}
 
           {/* ===== TODAY TASKS ===== */}
-          <div className="dash-section">
+          <motion.div className="dash-section"
+            initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35, delay: 0.45 }}>
             <div className="dash-section-header">
               <h3 className="dash-card-title">
                 <IonIcon icon={todayOutline} />
@@ -440,17 +449,18 @@ const Dashboard = () => {
                 <TaskCard key={task.id} task={task} onClick={() => history.push(`/tabs/task/${task.id}`)} />
               ))
             )}
-          </div>
+          </motion.div>
 
           {/* ===== PRODUCTIVITY FOOTER ===== */}
-          <div className="dash-productivity-footer">
+          <motion.div className="dash-productivity-footer"
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4, delay: 0.5 }}>
             <IonIcon icon={productivityIcon()} />
             <span>
               {completionRate >= 80 ? 'Produttività eccezionale!' :
                completionRate >= 50 ? 'Buon lavoro, continua così!' :
                'Inizia a completare i tuoi task!'}
             </span>
-          </div>
+          </motion.div>
         </div>
 
         {showFocusTimer && (

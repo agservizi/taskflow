@@ -263,3 +263,16 @@ ion-textarea.has-focus {
   --app-surface-2: #F1F5F9;
   --app-surface-3: #E2E8F0;
 }
+
+/* Action Sheet — separatori uniformi */
+ion-action-sheet .action-sheet-group {
+  border-radius: 14px !important;
+  overflow: hidden;
+}
+ion-action-sheet .action-sheet-button {
+  --border-width: 0 !important;
+  border-bottom: 0.55px solid rgba(255, 255, 255, 0.12) !important;
+}
+ion-action-sheet .action-sheet-button:last-child {
+  border-bottom: none !important;
+}

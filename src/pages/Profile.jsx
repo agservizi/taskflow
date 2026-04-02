@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import {
   IonPage,
   IonContent,
@@ -123,7 +124,8 @@ const Profile = () => {
       </IonHeader>
 
       <IonContent fullscreen className="profile-content">
-        <div className="profile-container">
+        <motion.div className="profile-container"
+          initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
           {/* Avatar Section */}
           <div className="profile-avatar-section">
             <div className="profile-avatar-wrapper" onClick={openEditModal}>
@@ -210,34 +212,41 @@ const Profile = () => {
           {/* Shortcuts */}
           <div className="section-label">Strumenti</div>
           <div className="profile-shortcuts">
-            <div className="shortcut-card" onClick={() => history.push('/projects')}>
+            <motion.div className="shortcut-card" onClick={() => history.push('/tabs/projects')} whileTap={{ scale: 0.93 }}
+              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25, delay: 0 }}>
               <IonIcon icon={folderOutline} className="shortcut-icon indigo" />
               <span className="shortcut-text">Progetti</span>
-            </div>
-            <div className="shortcut-card" onClick={() => history.push('/gamification')}>
+            </motion.div>
+            <motion.div className="shortcut-card" onClick={() => history.push('/tabs/gamification')} whileTap={{ scale: 0.93 }}
+              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25, delay: 0.04 }}>
               <IonIcon icon={trophyOutline} className="shortcut-icon gold" />
               <span className="shortcut-text">Gamification</span>
-            </div>
-            <div className="shortcut-card" onClick={() => history.push('/tabs/calendar')}>
+            </motion.div>
+            <motion.div className="shortcut-card" onClick={() => history.push('/tabs/calendar')} whileTap={{ scale: 0.93 }}
+              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25, delay: 0.08 }}>
               <IonIcon icon={calendarOutline} className="shortcut-icon blue" />
               <span className="shortcut-text">Calendario</span>
-            </div>
-            <div className="shortcut-card" onClick={() => history.push('/tabs/habits')}>
+            </motion.div>
+            <motion.div className="shortcut-card" onClick={() => history.push('/tabs/habits')} whileTap={{ scale: 0.93 }}
+              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25, delay: 0.12 }}>
               <IonIcon icon={flameOutline} className="shortcut-icon green" />
               <span className="shortcut-text">Abitudini</span>
-            </div>
-            <div className="shortcut-card" onClick={() => history.push('/tabs/templates')}>
+            </motion.div>
+            <motion.div className="shortcut-card" onClick={() => history.push('/tabs/templates')} whileTap={{ scale: 0.93 }}
+              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25, delay: 0.16 }}>
               <IonIcon icon={documentTextOutline} className="shortcut-icon purple" />
               <span className="shortcut-text">Template</span>
-            </div>
-            <div className="shortcut-card" onClick={() => history.push('/tabs/analytics')}>
+            </motion.div>
+            <motion.div className="shortcut-card" onClick={() => history.push('/tabs/analytics')} whileTap={{ scale: 0.93 }}
+              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25, delay: 0.2 }}>
               <IonIcon icon={analyticsOutline} className="shortcut-icon blue" />
               <span className="shortcut-text">Analytics</span>
-            </div>
-            <div className="shortcut-card" onClick={() => history.push('/tabs/categories')}>
+            </motion.div>
+            <motion.div className="shortcut-card" onClick={() => history.push('/tabs/categories')} whileTap={{ scale: 0.93 }}
+              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25, delay: 0.24 }}>
               <IonIcon icon={colorPaletteOutline} className="shortcut-icon orange" />
               <span className="shortcut-text">Categorie</span>
-            </div>
+            </motion.div>
           </div>
 
           {/* Import / Export */}
@@ -314,7 +323,7 @@ const Profile = () => {
             <IonIcon icon={logOutOutline} slot="start" />
             Esci dall'account
           </IonButton>
-        </div>
+        </motion.div>
 
         {/* Edit Profile Modal */}
         <IonModal

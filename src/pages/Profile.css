@@ -423,6 +423,7 @@
   align-items: center;
   justify-content: center;
   -webkit-appearance: none;
+  appearance: none;
   outline: none;
 }
 
