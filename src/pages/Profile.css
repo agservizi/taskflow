@@ -1,0 +1,450 @@
+.profile-toolbar {
+  --background: var(--ion-background-color);
+  --border-width: 0;
+}
+
+.profile-title {
+  font-size: 28px;
+  font-weight: 800;
+  padding-inline: 16px;
+  letter-spacing: -0.5px;
+}
+
+.profile-content {
+  --background: var(--ion-background-color);
+}
+
+.profile-container {
+  padding: 8px 20px 120px;
+}
+
+.profile-avatar-section {
+  text-align: center;
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.profile-avatar {
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 14px;
+  position: relative;
+}
+
+.profile-avatar::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4F46E5, #7C3AED, #14B8A6);
+  z-index: -1;
+  opacity: 0.5;
+  filter: blur(8px);
+}
+
+.avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #4F46E5, #7C3AED);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  font-weight: 800;
+  color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 4px 20px rgba(79, 70, 229, 0.35);
+}
+
+.avatar-emoji {
+  font-size: 44px;
+  background: linear-gradient(135deg, #f3f0ff, #e8e4ff);
+}
+
+.profile-avatar-wrapper {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.avatar-edit-badge {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--ion-color-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  border: 2px solid var(--ion-background-color, #fff);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.profile-name {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--ion-text-color);
+  margin: 0;
+  text-transform: capitalize;
+  letter-spacing: -0.5px;
+}
+
+.profile-email {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #64748B;
+  margin: 6px 0 0;
+  font-weight: 500;
+}
+
+.profile-email ion-icon {
+  font-size: 16px;
+}
+
+.profile-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.profile-stat-card {
+  background: var(--ion-card-background, #fff);
+  border-radius: var(--app-card-radius, 20px);
+  padding: 18px 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 14px var(--app-shadow-color, rgba(0, 0, 0, 0.05));
+  border: 1px solid var(--app-border-color, rgba(0, 0, 0, 0.04));
+}
+
+.profile-stat-card ion-icon {
+  font-size: 24px;
+}
+
+.stat-emoji {
+  font-size: 24px;
+}
+
+.stat-number {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--ion-text-color);
+  letter-spacing: -0.5px;
+}
+
+.stat-number-sm {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ion-text-color);
+}
+
+.stat-label {
+  font-size: 11px;
+  color: #64748B;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.profile-progress-section {
+  background: var(--ion-card-background, #fff);
+  border-radius: var(--app-card-radius, 20px);
+  padding: 18px;
+  margin-bottom: 22px;
+  box-shadow: 0 2px 14px var(--app-shadow-color, rgba(0, 0, 0, 0.05));
+  border: 1px solid var(--app-border-color, rgba(0, 0, 0, 0.04));
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ion-text-color);
+  margin-bottom: 12px;
+}
+
+.progress-percent {
+  color: var(--ion-color-primary);
+  font-weight: 800;
+}
+
+.progress-bar {
+  height: 8px;
+  background: var(--app-surface-2, var(--ion-color-light));
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4F46E5, #7C3AED, #14B8A6);
+  border-radius: 4px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.profile-info {
+  background: var(--ion-card-background, #fff);
+  border-radius: var(--app-card-radius, 20px);
+  overflow: hidden;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 14px var(--app-shadow-color, rgba(0, 0, 0, 0.05));
+  border: 1px solid var(--app-border-color, rgba(0, 0, 0, 0.04));
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 18px;
+  border-bottom: 1px solid var(--app-border-color, rgba(0, 0, 0, 0.04));
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-row-label {
+  font-size: 14px;
+  color: #64748B;
+  font-weight: 500;
+}
+
+.info-row-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ion-text-color);
+}
+
+.section-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  margin-top: 4px;
+  padding-left: 2px;
+}
+
+.theme-card {
+  background: var(--ion-card-background, #fff);
+  border-radius: var(--app-card-radius, 20px);
+  padding: 14px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 14px var(--app-shadow-color, rgba(0, 0, 0, 0.05));
+  border: 1px solid var(--app-border-color, rgba(0, 0, 0, 0.04));
+}
+
+.theme-segment {
+  --background: var(--app-surface-2, #F1F5F9);
+  border-radius: 14px;
+  padding: 3px;
+}
+
+.theme-segment ion-segment-button {
+  --border-radius: 12px;
+  --indicator-color: var(--ion-color-primary);
+  --color-checked: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  min-height: 42px;
+  text-transform: none;
+}
+
+.theme-segment ion-segment-button ion-icon {
+  font-size: 18px;
+  margin-bottom: 2px;
+}
+
+.logout-btn {
+  --border-radius: 16px;
+  font-weight: 700;
+  height: 50px;
+  margin-top: 8px;
+}
+
+.logout-btn {
+  --border-radius: 16px;
+  --background: rgba(239, 68, 68, 0.1);
+  --color: #EF4444;
+  --background-activated: rgba(239, 68, 68, 0.2);
+  font-weight: 700;
+  height: 52px;
+  margin-top: 8px;
+  font-size: 15px;
+}
+
+.section-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 10px;
+}
+
+/* Profile Bio */
+.profile-bio {
+  font-size: 14px;
+  color: var(--ion-color-medium);
+  margin: 4px 0 0;
+  line-height: 1.4;
+  max-width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Plan Badge */
+.profile-plan-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.trial-days {
+  font-size: 12px;
+  color: var(--ion-color-medium);
+  font-weight: 500;
+}
+
+.setup-name-btn {
+  margin-top: 10px;
+  --border-radius: 100px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Shortcuts */
+.profile-shortcuts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.shortcut-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 8px;
+  border-radius: 16px;
+  background: var(--ion-card-background, #fff);
+  border: 1px solid var(--app-border-color, rgba(0, 0, 0, 0.04));
+  box-shadow: 0 2px 10px var(--app-shadow-color, rgba(0, 0, 0, 0.04));
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.shortcut-card:active {
+  transform: scale(0.95);
+}
+
+.shortcut-icon {
+  font-size: 26px;
+}
+
+.shortcut-icon.gold { color: #FFD700; }
+.shortcut-icon.blue { color: #4F46E5; }
+.shortcut-icon.orange { color: #FFA500; }
+.shortcut-icon.green { color: #22C55E; }
+.shortcut-icon.indigo { color: #6366F1; }
+.shortcut-icon.purple { color: #8B5CF6; }
+
+.shortcut-text {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ion-text-color);
+  text-align: center;
+}
+
+/* Edit Profile Modal */
+.edit-avatar-section {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.edit-avatar-preview {
+  font-size: 64px;
+  margin-bottom: 8px;
+}
+
+.edit-avatar-label {
+  display: block;
+  font-size: 13px;
+  color: var(--ion-color-medium);
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.emoji-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.emoji-option {
+  width: 44px;
+  height: 44px;
+  font-size: 24px;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  background: var(--ion-color-light, #f5f5f5);
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-appearance: none;
+  outline: none;
+}
+
+.emoji-option:active {
+  transform: scale(0.9);
+}
+
+.emoji-selected {
+  border-color: var(--ion-color-primary);
+  background: rgba(var(--ion-color-primary-rgb, 79, 70, 229), 0.1);
+  transform: scale(1.1);
+}
+
+.edit-field {
+  margin-bottom: 20px;
+}
+
+.edit-field-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ion-text-color);
+  margin-bottom: 6px;
+}
+
+.edit-input,
+.edit-textarea {
+  --border-radius: 12px;
+  font-size: 15px;
+}
+
+.char-count {
+  display: block;
+  text-align: right;
+  font-size: 11px;
+  color: var(--ion-color-medium);
+  margin-top: 4px;
+}

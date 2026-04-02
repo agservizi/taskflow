@@ -1,0 +1,200 @@
+.create-toolbar {
+  --background: var(--ion-background-color);
+  --border-width: 0;
+}
+
+.save-btn {
+  --color: var(--ion-color-primary);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.save-btn ion-icon {
+  margin-right: 4px;
+}
+
+.create-content {
+  --background: var(--ion-background-color);
+}
+
+.create-container {
+  padding: 16px 20px 40px;
+}
+
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #64748B;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  --background: var(--app-surface-1, var(--ion-card-background, #fff));
+  --border-radius: 16px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --highlight-color-focused: var(--ion-color-primary);
+  font-size: 15px;
+  border-radius: 16px;
+  border: 1px solid var(--app-border-color, rgba(0, 0, 0, 0.04));
+}
+
+.form-textarea {
+  --padding-top: 14px;
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+}
+
+.form-half {
+  flex: 1;
+}
+
+.date-picker-btn {
+  --border-radius: 16px;
+  --border-color: var(--app-border-color, var(--ion-color-medium-tint));
+  --color: var(--ion-text-color);
+  font-size: 14px;
+  font-weight: 600;
+  height: 50px;
+  text-transform: none;
+}
+
+.date-modal {
+  --border-radius: 24px 24px 0 0;
+}
+
+.custom-datetime {
+  margin: 0 auto;
+  color: var(--ion-text-color);
+  --background: var(--app-surface-1);
+  --ion-text-color: var(--ion-text-color);
+}
+
+.custom-datetime::part(calendar-day),
+.custom-datetime::part(month-year-button),
+.custom-datetime::part(calendar-day-of-week) {
+  color: var(--ion-text-color);
+}
+
+.custom-datetime::part(calendar-day active),
+.custom-datetime::part(calendar-day today) {
+  color: var(--ion-color-primary-contrast);
+}
+
+.date-modal ion-toolbar {
+  --background: var(--app-surface-1);
+  --color: var(--ion-text-color);
+}
+
+.date-modal ion-content {
+  --background: var(--app-surface-1);
+}
+
+.date-modal ion-title {
+  color: var(--ion-text-color);
+}
+
+.date-modal ion-button {
+  --color: var(--ion-color-primary);
+}
+
+/* Picker list styles */
+.picker-list {
+  background: transparent;
+  padding: 4px 0;
+}
+
+.picker-item {
+  --background: transparent;
+  --color: var(--ion-text-color);
+  --min-height: 54px;
+  --padding-start: 22px;
+  --inner-padding-end: 22px;
+  font-size: 16px;
+  font-weight: 600;
+  --border-color: var(--app-border-color, rgba(0, 0, 0, 0.04));
+}
+
+.picker-item-selected {
+  --background: rgba(79, 70, 229, 0.08);
+  font-weight: 700;
+}
+
+.picker-emoji {
+  font-size: 20px;
+  margin-right: 14px;
+}
+
+.picker-cat-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 6px;
+  margin-right: 14px;
+  flex-shrink: 0;
+}
+
+/* Tags */
+.tags-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.tag-chip {
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Toggle Row */
+.form-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-toggle-row ion-toggle {
+  --track-background: var(--app-surface-2, #1E293B);
+}
+
+/* New Tag Row */
+.new-tag-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--app-border-color, rgba(255,255,255,0.08));
+}
+
+.new-tag-colors {
+  display: flex;
+  gap: 6px;
+}
+
+.color-pick-sm {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.color-pick-sm-sel {
+  border-color: var(--ion-text-color);
+}

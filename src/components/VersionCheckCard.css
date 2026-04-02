@@ -1,0 +1,199 @@
+.version-card {
+  margin: 0;
+  border-radius: var(--app-card-radius, 20px);
+  box-shadow: 0 2px 16px var(--app-shadow-color, rgba(0, 0, 0, 0.06));
+  border: 1px solid var(--app-border-color, rgba(0, 0, 0, 0.04));
+  overflow: hidden;
+}
+
+.version-card-content {
+  padding: 20px !important;
+}
+
+.version-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.version-icon-wrap {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.15), rgba(124, 58, 237, 0.1));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4F46E5;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.version-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.version-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ion-text-color);
+  margin: 0;
+}
+
+.version-number {
+  font-size: 13px;
+  color: #64748B;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.version-code {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+/* Update Banner */
+.update-banner {
+  background: linear-gradient(135deg, rgba(20, 184, 166, 0.08), rgba(20, 184, 166, 0.15));
+  border: 1px solid rgba(20, 184, 166, 0.2);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 14px;
+  animation: bannerSlide 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes bannerSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.update-banner-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.update-icon {
+  font-size: 24px;
+  color: #14B8A6;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.update-banner-content strong {
+  display: block;
+  font-size: 14px;
+  color: var(--ion-text-color);
+  margin-bottom: 2px;
+}
+
+.update-banner-content p {
+  font-size: 12px;
+  color: #64748B;
+  margin: 0;
+}
+
+.release-notes {
+  margin-top: 4px !important;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.download-btn {
+  --background: linear-gradient(135deg, #14B8A6, #0D9488);
+  --border-radius: 14px;
+  --box-shadow: 0 4px 16px rgba(20, 184, 166, 0.3);
+  font-weight: 700;
+  font-size: 13px;
+  height: 46px;
+  margin: 0;
+}
+
+/* Progress */
+.download-progress {
+  background: rgba(79, 70, 229, 0.06);
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 14px;
+}
+
+.progress-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ion-text-color);
+}
+
+.progress-spinner {
+  width: 18px;
+  height: 18px;
+  color: #4F46E5;
+}
+
+.progress-bar {
+  --background: rgba(79, 70, 229, 0.15);
+  --progress-background: #4F46E5;
+  border-radius: 4px;
+  height: 6px;
+}
+
+/* Error */
+.update-error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  font-size: 13px;
+  color: #EF4444;
+}
+
+.update-error ion-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.update-error span {
+  flex: 1;
+}
+
+/* Up to date */
+.up-to-date {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #14B8A6;
+}
+
+.up-to-date ion-icon {
+  font-size: 18px;
+}
+
+/* Check button */
+.check-btn {
+  --border-radius: 14px;
+  --border-color: var(--app-border-color, var(--ion-color-medium-tint));
+  font-weight: 700;
+  font-size: 13px;
+  height: 44px;
+  margin: 0;
+}

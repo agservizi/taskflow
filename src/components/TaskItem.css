@@ -1,0 +1,69 @@
+.task-item {
+  --background: var(--ion-card-background, #fff);
+  --padding-start: 0;
+  --inner-padding-end: 16px;
+  margin: 8px 0;
+  border-radius: 16px;
+  overflow: hidden;
+  --min-height: 62px;
+  box-shadow: 0 1px 8px var(--app-shadow-color, rgba(0, 0, 0, 0.04));
+  border: 1px solid var(--app-border-color, rgba(0, 0, 0, 0.04));
+}
+
+.task-item.completed {
+  opacity: 0.5;
+}
+
+.task-item-priority-bar {
+  width: 4px;
+  height: 100%;
+  min-height: 50px;
+  border-radius: 0;
+}
+
+.task-checkbox {
+  --size: 22px;
+  --border-radius: 8px;
+  margin-right: 12px;
+  --border-color: #64748B;
+  --checkbox-background-checked: var(--ion-color-primary);
+}
+
+.task-item-label h2 {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0;
+  transition: all 0.2s ease;
+  letter-spacing: -0.2px;
+}
+
+.task-item-label h2.line-through {
+  text-decoration: line-through;
+  color: #64748B;
+}
+
+.task-item-date {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: #64748B !important;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.task-item-date ion-icon {
+  font-size: 13px;
+}
+
+.task-item-pin {
+  font-size: 12px;
+  color: #F59E0B;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+.slide-option {
+  font-size: 14px;
+  font-weight: 700;
+}

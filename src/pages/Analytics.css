@@ -1,0 +1,235 @@
+/* Analytics Page */
+.analytics-toolbar {
+  --background: transparent;
+}
+
+.analytics-content {
+  --background: var(--ion-background-color);
+}
+
+.analytics-container {
+  padding: 0 16px 100px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Streak Cards */
+.analytics-streak-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.streak-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 8px;
+  border-radius: 16px;
+  background: var(--ion-card-background, #fff);
+  border: 1px solid rgba(var(--ion-color-medium-rgb, 128, 128, 128), 0.1);
+}
+
+.streak-icon {
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+
+.streak-icon.fire { color: #EF4444; }
+.streak-icon.record { color: #F59E0B; }
+.streak-icon.avg { color: #4F46E5; }
+
+.streak-value {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--ion-text-color);
+}
+
+.streak-label {
+  font-size: 11px;
+  color: var(--ion-color-medium);
+  text-align: center;
+  margin-top: 2px;
+}
+
+/* Analytics Card */
+.analytics-card {
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--ion-card-background, #fff);
+  border: 1px solid rgba(var(--ion-color-medium-rgb, 128, 128, 128), 0.1);
+  margin-bottom: 16px;
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 16px;
+  color: var(--ion-text-color);
+}
+
+.card-title ion-icon {
+  font-size: 20px;
+  color: var(--ion-color-primary);
+}
+
+/* Completion Rate Circle */
+.rate-card {
+  text-align: center;
+}
+
+.rate-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ion-text-color);
+}
+
+.rate-header ion-icon {
+  font-size: 20px;
+  color: #22C55E;
+}
+
+.rate-circle {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+}
+
+.rate-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.rate-bg-circle {
+  fill: none;
+  stroke: rgba(var(--ion-color-medium-rgb, 128, 128, 128), 0.1);
+  stroke-width: 8;
+}
+
+.rate-fill-circle {
+  fill: none;
+  stroke: #22C55E;
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dasharray 0.8s ease;
+}
+
+.rate-percent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--ion-text-color);
+}
+
+.rate-stats {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--ion-color-medium);
+}
+
+/* Analytics Segment */
+.analytics-segment {
+  margin-bottom: 16px;
+  --background: var(--ion-card-background, #f5f5f5);
+  border-radius: 12px;
+}
+
+/* Pie Chart */
+.pie-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pie-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.legend-name {
+  color: var(--ion-text-color);
+}
+
+.legend-value {
+  color: var(--ion-color-medium);
+  font-weight: 600;
+}
+
+/* Priority Bars */
+.priority-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.priority-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.priority-bar-label {
+  font-size: 13px;
+  font-weight: 600;
+  width: 50px;
+  color: var(--ion-text-color);
+}
+
+.priority-bar-track {
+  flex: 1;
+  height: 12px;
+  border-radius: 6px;
+  background: rgba(var(--ion-color-medium-rgb, 128, 128, 128), 0.1);
+  overflow: hidden;
+}
+
+.priority-bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.6s ease;
+}
+
+.priority-bar-value {
+  font-size: 12px;
+  color: var(--ion-color-medium);
+  white-space: nowrap;
+  min-width: 60px;
+  text-align: right;
+}
+
+.no-data {
+  text-align: center;
+  color: var(--ion-color-medium);
+  font-size: 14px;
+  padding: 20px;
+}

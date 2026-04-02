@@ -1,0 +1,213 @@
+.tasks-toolbar {
+  --background: var(--ion-background-color);
+  --border-width: 0;
+}
+
+.tasks-title {
+  font-size: 28px;
+  font-weight: 800;
+  padding-inline: 16px;
+  letter-spacing: -0.5px;
+}
+
+.toolbar-icon-btn {
+  --color: var(--ion-color-medium-shade);
+  font-size: 20px;
+}
+
+.tasks-searchbar {
+  --background: var(--app-surface-1, #F1F5F9);
+  --border-radius: 14px;
+  --box-shadow: none;
+  --placeholder-color: #64748B;
+  --icon-color: #64748B;
+  padding: 0 8px;
+  font-size: 14px;
+}
+
+.segment-toolbar {
+  padding: 0 8px;
+}
+
+.tasks-segment {
+  --background: var(--app-surface-1, rgba(0,0,0,0.04));
+  border-radius: 12px;
+  padding: 3px;
+}
+
+.tasks-segment ion-segment-button {
+  --border-radius: 10px;
+  --indicator-color: var(--ion-color-primary);
+  --color-checked: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  min-height: 36px;
+  text-transform: none;
+  letter-spacing: 0.2px;
+}
+
+/* Filter Bar */
+.filter-bar {
+  padding: 0 8px;
+}
+
+.filter-bar-inner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  overflow-x: auto;
+}
+
+.filter-chip {
+  --border-radius: 20px;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  height: 32px;
+  text-transform: none;
+  flex-shrink: 0;
+}
+
+.filter-badge {
+  margin-left: 6px;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 8px;
+}
+
+.task-count {
+  font-size: 12px;
+  color: #64748B;
+  font-weight: 600;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* Filter Modal */
+.filter-section {
+  margin-bottom: 24px;
+}
+
+.filter-section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ion-text-color);
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-option-chip {
+  --border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: none;
+  height: 36px;
+}
+
+/* Bulk Operations */
+.bulk-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--app-surface-1, #fff);
+  border-bottom: 1px solid var(--app-border-color, rgba(0, 0, 0, 0.06));
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.bulk-count {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ion-color-primary);
+  flex: 1;
+}
+
+.task-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.task-row.bulk-mode {
+  padding-left: 4px;
+}
+
+.bulk-checkbox {
+  --size: 22px;
+  --border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.tasks-content {
+  --background: var(--ion-background-color);
+}
+
+.tasks-container {
+  padding: 8px 16px 120px;
+}
+
+.pinned-section {
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--app-border-color, rgba(0,0,0,0.06));
+}
+
+.pinned-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #F59E0B;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 8px 4px;
+}
+
+.pinned-title ion-icon {
+  font-size: 16px;
+}
+
+.tasks-list {
+  background: transparent;
+  padding: 0;
+}
+
+.tasks-empty {
+  text-align: center;
+  padding: 60px 16px;
+}
+
+.tasks-empty ion-icon {
+  font-size: 48px;
+  color: var(--ion-color-primary-tint);
+  opacity: 0.5;
+}
+
+.tasks-empty p {
+  color: #64748B;
+  font-size: 14px;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+.tasks-fab {
+  margin: 0 16px 20px 0;
+}
+
+.tasks-fab ion-fab-button {
+  --background: linear-gradient(135deg, #4F46E5, #7C3AED);
+  --box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+  width: 58px;
+  height: 58px;
+  --border-radius: 18px;
+}

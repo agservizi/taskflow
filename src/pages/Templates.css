@@ -1,0 +1,92 @@
+.tpl-toolbar {
+  --background: transparent;
+}
+
+.tpl-content {
+  --background: var(--ion-background-color);
+}
+
+.tpl-container {
+  padding: 8px 16px 32px;
+}
+
+.tpl-loading {
+  display: flex;
+  justify-content: center;
+  padding: 48px;
+}
+
+.tpl-empty {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--ion-color-medium);
+}
+
+.tpl-empty-emoji {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.tpl-hint {
+  font-size: 13px;
+  margin-top: 8px;
+  opacity: 0.7;
+}
+
+.tpl-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tpl-card {
+  background: var(--app-surface-1, #162032);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.tpl-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tpl-name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ion-text-color);
+}
+
+.tpl-actions {
+  display: flex;
+  gap: 0;
+}
+
+.tpl-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.tpl-card-meta ion-badge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 8px;
+}
+
+.tpl-desc {
+  font-size: 13px;
+  color: var(--ion-color-medium);
+  margin: 8px 0 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tpl-use-btn {
+  margin-top: 12px;
+  --border-radius: 10px;
+  font-weight: 600;
+}

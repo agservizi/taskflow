@@ -1,2 +1,265 @@
-/* For information on how to create your own theme, please refer to:
-http://ionicframework.com/docs/theming/ */
+/* TaskFlow Theme — Modern iOS / Material You */
+
+:root {
+  /* Primary — Indigo 600 (Material You) */
+  --ion-color-primary: #4F46E5;
+  --ion-color-primary-rgb: 79, 70, 229;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #4338CA;
+  --ion-color-primary-tint: #6366F1;
+
+  /* Secondary — Violet */
+  --ion-color-secondary: #7C3AED;
+  --ion-color-secondary-rgb: 124, 58, 237;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #6D28D9;
+  --ion-color-secondary-tint: #8B5CF6;
+
+  /* Tertiary — Teal */
+  --ion-color-tertiary: #14B8A6;
+  --ion-color-tertiary-rgb: 20, 184, 166;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #0D9488;
+  --ion-color-tertiary-tint: #2DD4BF;
+
+  /* Success */
+  --ion-color-success: #10B981;
+  --ion-color-success-rgb: 16, 185, 129;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #059669;
+  --ion-color-success-tint: #34D399;
+
+  /* Warning */
+  --ion-color-warning: #F59E0B;
+  --ion-color-warning-rgb: 245, 158, 11;
+  --ion-color-warning-contrast: #000000;
+  --ion-color-warning-contrast-rgb: 0, 0, 0;
+  --ion-color-warning-shade: #D97706;
+  --ion-color-warning-tint: #FBBF24;
+
+  /* Danger */
+  --ion-color-danger: #EF4444;
+  --ion-color-danger-rgb: 239, 68, 68;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #DC2626;
+  --ion-color-danger-tint: #F87171;
+
+  /* Medium */
+  --ion-color-medium: #94A3B8;
+  --ion-color-medium-rgb: 148, 163, 184;
+  --ion-color-medium-contrast: #000000;
+  --ion-color-medium-contrast-rgb: 0, 0, 0;
+  --ion-color-medium-shade: #64748B;
+  --ion-color-medium-tint: #CBD5E1;
+
+  /* Light */
+  --ion-color-light: #F1F5F9;
+  --ion-color-light-rgb: 241, 245, 249;
+  --ion-color-light-contrast: #1E293B;
+  --ion-color-light-contrast-rgb: 30, 41, 59;
+  --ion-color-light-shade: #E2E8F0;
+  --ion-color-light-tint: #F8FAFC;
+
+  /* Surfaces */
+  --ion-background-color: #F8FAFC;
+  --ion-background-color-rgb: 248, 250, 252;
+  --ion-card-background: #ffffff;
+  --ion-text-color: #0F172A;
+  --ion-text-color-rgb: 15, 23, 42;
+  --ion-toolbar-background: #F8FAFC;
+  --ion-tab-bar-background: #ffffff;
+  --ion-tab-bar-border-color: transparent;
+
+  /* Custom app vars */
+  --app-border-color: rgba(0, 0, 0, 0.06);
+  --app-shadow-color: rgba(0, 0, 0, 0.04);
+  --app-card-radius: 20px;
+  --app-surface-1: #ffffff;
+  --app-surface-2: #F1F5F9;
+  --app-surface-3: #E2E8F0;
+
+  /* Typography */
+  --ion-font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+
+  /* Safe area */
+  --ion-safe-area-top: env(safe-area-inset-top);
+  --ion-safe-area-bottom: env(safe-area-inset-bottom);
+}
+
+/* ===== Dark Mode ===== */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light-theme) {
+    --ion-background-color: #0C1222;
+    --ion-background-color-rgb: 12, 18, 34;
+    --ion-card-background: #162032;
+    --ion-text-color: #E8ECF4;
+    --ion-text-color-rgb: 232, 236, 244;
+    --ion-toolbar-background: #0C1222;
+    --ion-tab-bar-background: #162032;
+    --ion-tab-bar-border-color: transparent;
+
+    --ion-color-light: #1E293B;
+    --ion-color-light-rgb: 30, 41, 59;
+    --ion-color-medium: #64748B;
+    --ion-color-medium-rgb: 100, 116, 139;
+
+    --ion-border-color: rgba(255, 255, 255, 0.06);
+    --ion-item-border-color: rgba(255, 255, 255, 0.06);
+
+    --app-border-color: rgba(255, 255, 255, 0.06);
+    --app-shadow-color: rgba(0, 0, 0, 0.4);
+    --app-surface-1: #162032;
+    --app-surface-2: #1E293B;
+    --app-surface-3: #334155;
+  }
+}
+
+/* ===== Global Styles ===== */
+
+ion-content {
+  --keyboard-offset: 0px !important;
+  --ion-overscroll-behavior: contain;
+}
+
+/* --- Floating Tab Bar --- */
+ion-tab-bar {
+  --background: var(--app-surface-1);
+  border: 1px solid var(--app-border-color);
+  border-radius: 28px;
+  margin: 0 14px;
+  margin-bottom: calc(env(safe-area-inset-bottom, 6px) + 6px);
+  padding: 6px 4px;
+  height: auto;
+  min-height: 62px;
+  box-shadow: 0 4px 24px var(--app-shadow-color),
+              0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  ion-tab-bar {
+    background: rgba(22, 32, 50, 0.92);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5),
+                0 1px 0 rgba(255, 255, 255, 0.04) inset;
+  }
+}
+
+ion-tab-button {
+  --color: var(--ion-color-medium);
+  --color-selected: var(--ion-color-primary);
+  --background: transparent;
+  --background-focused: transparent;
+  --ripple-color: transparent;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  max-width: 80px;
+  padding: 4px 0;
+  transition: transform 0.2s ease;
+}
+
+ion-tab-button.tab-selected {
+  transform: scale(1.05);
+}
+
+ion-tab-button.tab-selected::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 3px;
+  background: var(--ion-color-primary);
+  border-radius: 3px;
+}
+
+ion-tab-button ion-icon {
+  font-size: 23px;
+  transition: transform 0.2s ease;
+}
+
+ion-tab-button ion-label {
+  margin-top: 2px;
+}
+
+/* --- Cards --- */
+ion-card {
+  margin: 0;
+  border-radius: var(--app-card-radius);
+  box-shadow: none;
+}
+
+/* --- Clean header --- */
+ion-header::after {
+  display: none;
+}
+
+/* --- Focus --- */
+ion-input.has-focus,
+ion-textarea.has-focus {
+  --highlight-color-focused: var(--ion-color-primary);
+}
+
+/* --- Transitions --- */
+.ion-page {
+  will-change: transform, opacity;
+}
+
+/* ===== Forced Dark Theme (class-based toggle) ===== */
+:root.dark-theme {
+  --ion-background-color: #0C1222;
+  --ion-background-color-rgb: 12, 18, 34;
+  --ion-card-background: #162032;
+  --ion-text-color: #E8ECF4;
+  --ion-text-color-rgb: 232, 236, 244;
+  --ion-toolbar-background: #0C1222;
+  --ion-tab-bar-background: #162032;
+  --ion-tab-bar-border-color: transparent;
+
+  --ion-color-light: #1E293B;
+  --ion-color-light-rgb: 30, 41, 59;
+  --ion-color-medium: #64748B;
+  --ion-color-medium-rgb: 100, 116, 139;
+
+  --ion-border-color: rgba(255, 255, 255, 0.06);
+  --ion-item-border-color: rgba(255, 255, 255, 0.06);
+
+  --app-border-color: rgba(255, 255, 255, 0.06);
+  --app-shadow-color: rgba(0, 0, 0, 0.4);
+  --app-surface-1: #162032;
+  --app-surface-2: #1E293B;
+  --app-surface-3: #334155;
+}
+
+:root.dark-theme ion-tab-bar {
+  background: rgba(22, 32, 50, 0.92);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5),
+              0 1px 0 rgba(255, 255, 255, 0.04) inset;
+}
+
+/* ===== Forced Light Theme ===== */
+:root.light-theme {
+  --ion-background-color: #F8FAFC;
+  --ion-background-color-rgb: 248, 250, 252;
+  --ion-card-background: #ffffff;
+  --ion-text-color: #0F172A;
+  --ion-text-color-rgb: 15, 23, 42;
+  --ion-toolbar-background: #F8FAFC;
+  --ion-tab-bar-background: #ffffff;
+  --ion-tab-bar-border-color: transparent;
+
+  --app-border-color: rgba(0, 0, 0, 0.06);
+  --app-shadow-color: rgba(0, 0, 0, 0.04);
+  --app-surface-1: #ffffff;
+  --app-surface-2: #F1F5F9;
+  --app-surface-3: #E2E8F0;
+}

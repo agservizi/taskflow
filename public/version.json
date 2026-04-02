@@ -1,0 +1,7 @@
+{
+  "versionCode": 10,
+  "versionName": "4.2.4",
+  "apkUrl": "https://taskflow-woad-six.vercel.app/releases/app-release.apk",
+  "releaseNotes": "Fix crash all'avvio. Focus Timer Dashboard funzionante.",
+  "forceUpdate": false
+}

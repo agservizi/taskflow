@@ -1,0 +1,226 @@
+.habits-toolbar {
+  --background: transparent;
+}
+
+.habits-content {
+  --background: var(--ion-background-color);
+}
+
+.habits-container {
+  padding: 8px 16px 32px;
+}
+
+.habits-loading {
+  display: flex;
+  justify-content: center;
+  padding: 48px;
+}
+
+.habits-empty {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--ion-color-medium);
+}
+
+.habits-empty-emoji {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.habits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.habit-card {
+  background: var(--app-surface-1, #162032);
+  border-radius: 16px;
+  border-left: 4px solid var(--habit-color, #22C55E);
+  overflow: hidden;
+}
+
+.habit-done {
+  background: color-mix(in srgb, var(--habit-color) 8%, var(--app-surface-1, #162032));
+}
+
+.habit-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+}
+
+.habit-emoji {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.habit-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.habit-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ion-text-color);
+  display: block;
+}
+
+.habit-progress {
+  font-size: 12px;
+  color: var(--ion-color-medium);
+}
+
+.habit-check {
+  flex-shrink: 0;
+}
+
+.habit-check-done {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--habit-color, #22C55E);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 18px;
+}
+
+.habit-check-ring {
+  width: 36px;
+  height: 36px;
+  position: relative;
+}
+
+.habit-check-ring svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.habit-ring-bg {
+  fill: none;
+  stroke: var(--app-surface-2, #1E293B);
+  stroke-width: 3;
+}
+
+.habit-ring-fill {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  transition: stroke-dasharray 0.3s;
+}
+
+.habit-ring-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ion-text-color);
+}
+
+.habit-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px 10px;
+}
+
+.habit-streak {
+  font-size: 12px;
+  color: #F59E0B;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+}
+
+.habit-delete {
+  background: none;
+  border: none;
+  color: var(--ion-color-medium);
+  font-size: 16px;
+  padding: 4px;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+/* Add Habit Form */
+.add-habit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.emoji-picker-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.emoji-pick {
+  font-size: 24px;
+  background: var(--app-surface-2, #1E293B);
+  border: 2px solid transparent;
+  border-radius: 10px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.emoji-pick-sel {
+  border-color: var(--ion-color-primary);
+  background: rgba(79, 70, 229, 0.15);
+}
+
+.color-picker-row {
+  display: flex;
+  gap: 8px;
+}
+
+.color-pick {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  cursor: pointer;
+}
+
+.color-pick-sel {
+  border-color: var(--ion-text-color);
+  box-shadow: 0 0 0 2px var(--ion-background-color);
+}
+
+.target-picker {
+  display: flex;
+  gap: 8px;
+}
+
+.target-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--app-surface-2, #1E293B);
+  border: 2px solid transparent;
+  color: var(--ion-text-color);
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.target-btn-sel {
+  border-color: var(--ion-color-primary);
+  background: rgba(79, 70, 229, 0.15);
+  color: var(--ion-color-primary);
+}

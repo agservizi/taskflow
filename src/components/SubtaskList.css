@@ -1,0 +1,107 @@
+.subtask-section {
+  margin-bottom: 28px;
+}
+
+.subtask-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.subtask-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ion-text-color);
+  margin: 0;
+}
+
+.subtask-count {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ion-color-primary);
+  background: rgba(79, 70, 229, 0.1);
+  padding: 3px 10px;
+  border-radius: 10px;
+}
+
+.subtask-progress {
+  height: 4px;
+  background: var(--app-surface-2, #F1F5F9);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.subtask-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4F46E5, #22C55E);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.subtask-list {
+  background: transparent;
+  padding: 0;
+}
+
+.subtask-item {
+  --background: var(--ion-card-background, #fff);
+  --min-height: 48px;
+  --padding-start: 12px;
+  --inner-padding-end: 12px;
+  margin-bottom: 4px;
+  border-radius: 12px;
+  border: 1px solid var(--app-border-color, rgba(0, 0, 0, 0.04));
+  font-size: 14px;
+}
+
+.subtask-completed {
+  opacity: 0.6;
+}
+
+.subtask-checkbox {
+  --size: 20px;
+  --border-radius: 6px;
+  margin-right: 10px;
+}
+
+.subtask-item .line-through {
+  text-decoration: line-through;
+  color: #64748B;
+}
+
+.subtask-loading {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.subtask-add {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.subtask-input {
+  flex: 1;
+  --background: var(--app-surface-1, #fff);
+  --border-radius: 12px;
+  --padding-start: 14px;
+  --padding-end: 14px;
+  font-size: 14px;
+  --highlight-color-focused: var(--ion-color-primary);
+  border: 1px solid var(--app-border-color, rgba(0, 0, 0, 0.04));
+  border-radius: 12px;
+}
+
+.subtask-add-btn {
+  --background: var(--ion-color-primary);
+  --border-radius: 12px;
+  height: 44px;
+  width: 44px;
+  min-width: 44px;
+  --padding-start: 0;
+  --padding-end: 0;
+}

@@ -1,0 +1,27 @@
+{
+  "buildCommand": "vite build",
+  "outputDirectory": "dist",
+  "headers": [
+    {
+      "source": "/version.json",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" },
+        { "key": "Pragma", "value": "no-cache" },
+        { "key": "Expires", "value": "0" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    },
+    {
+      "source": "/releases/(.*)",
+      "headers": [
+        { "key": "Content-Type", "value": "application/vnd.android.package-archive" },
+        { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" },
+        { "key": "Content-Disposition", "value": "attachment; filename=\"TaskFlow.apk\"" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    }
+  ],
+  "rewrites": [
+    { "source": "/((?!version\\.json|releases/|favicon\\.png).*)", "destination": "/index.html" }
+  ]
+}
