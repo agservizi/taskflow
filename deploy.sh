@@ -146,6 +146,22 @@ build_apk() {
   print_ok "APK generata: ${APK_SIZE}"
 }
 
+# ─── Git Commit & Push ───
+git_push() {
+  print_step "GIT COMMIT & PUSH"
+
+  git add -A
+  if git diff --cached --quiet; then
+    print_warn "Nessuna modifica da committare"
+  else
+    git commit -m "release: v${CURRENT_NAME} (code: ${CURRENT_CODE})"
+    print_ok "Commit creato: release v${CURRENT_NAME}"
+  fi
+
+  git push origin main
+  print_ok "Push su GitHub completato → github.com/agservizi/taskflow"
+}
+
 # ─── Deploy Vercel ───
 deploy_vercel() {
   print_step "DEPLOY SU VERCEL"
@@ -170,6 +186,7 @@ deploy_vercel() {
   echo -e "  🌐 Web App:  ${BLUE}${DEPLOY_URL}${NC}"
   echo -e "  📦 APK URL:  ${BLUE}${DEPLOY_URL}/releases/app-release.apk${NC}"
   echo -e "  📋 Version:  ${BLUE}${DEPLOY_URL}/version.json${NC}"
+  echo -e "  📂 GitHub:   ${BLUE}https://github.com/agservizi/taskflow${NC}"
   echo ""
 }
 
@@ -210,10 +227,12 @@ case $CHOICE in
     cp "$APK_PUBLIC" dist/releases/
     print_ok "APK inclusa nel build"
     
+    git_push
     deploy_vercel
     ;;
   2) # Solo web
     build_web
+    git_push
     deploy_vercel
     ;;
   3) # Solo APK
@@ -227,12 +246,14 @@ case $CHOICE in
     cp "$APK_PUBLIC" dist/releases/
     print_ok "APK inclusa nel build"
 
+    git_push
     deploy_vercel
     ;;
   4) # Solo bump
     detect_vercel_domain
     bump_version
-    print_ok "Versione aggiornata. Lancia il deploy quando pronto."
+    git_push
+    print_ok "Versione aggiornata e pushata su GitHub."
     ;;
   *)
     print_err "Scelta non valida"
